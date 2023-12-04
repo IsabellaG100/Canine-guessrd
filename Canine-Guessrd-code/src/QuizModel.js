@@ -11,18 +11,11 @@ export default {
     allDogBreeds: {},
 
 
-    setChoosenDogBreed(dogbreed){
-        this.choosenDogBreed = dogbreed;
-    },
-
-    setChoosenOrigin(origin){
-        this.choosenCountryOrigin = origin;
-    },
 
     getFirstDogBreedsDescription(){
         this.allDogBreeds = getDogBreed()
         return this.allDogBreeds[0].breedDescription
-    }
+    },
     
     
 
