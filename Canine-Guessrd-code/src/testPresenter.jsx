@@ -3,11 +3,14 @@ import TestView from "./testView";
 export default observer(
     function Test(props){
         return(
-            <TestView text={props.model.text}/>
+            <TestView changetext={showDogbreedDescHandlerACB} text={props.model.text} getAllDogbreeds={getAllDogbreedsHandlerACB} />
         );
 
         function showDogbreedDescHandlerACB(){
-            return props.model.setText()
+            return props.model.setText(props.model.dogBreedPromiseState.data[3].breedName)
+        }
+        function getAllDogbreedsHandlerACB(){
+            return props.model.getAllData()
         }
 
     }

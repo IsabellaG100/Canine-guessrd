@@ -7,21 +7,22 @@ export function getDogBreed(){
         {headers: 
             {"X-RapidAPI-Key": API_KEY,
             "X-RapidAPI-Host": "dogbreeddb.p.rapidapi.com",
-            "X-RapidAPI-App": RAPIDAPI_APP_KEY},}).then(gotResponseACB).then(onlyKeepResultsACB)
+            "X-RapidAPI-App": RAPIDAPI_APP_KEY},}).then(gotResponseACB).catch(error=>{console.error('Error happend', error)})
             );
-    function onlyKeepResultsACB(response){
-        if (!response.ok){
-            throw new Error("Response from was api not okay  ")
-        }
-        return response.results;
-    }
+
+
     function gotResponseACB(response){
         if (!response.ok){
             throw new Error("Response from was api not okay  ")
         }
-        return response.json();
+        return response.json().then((jsonData)=> {
+            console.log("Parsed JSON data: ", jsonData);
+
+            return jsonData;
+        });
     }
 }
+/*
 
 try {
     const response = await fetch(BASE_URL, {headers: 
@@ -37,4 +38,4 @@ try {
     console.log('JSON Response:', result);
   } catch (error) {
     console.error(error);
-  }
+  }*/

@@ -1,14 +1,17 @@
 function TestView(props){
-    function showTextACB(){
-        props.showDogbreedDesc("nu ändra ja texten")
+    function getDogBreedDataACB(){
+        props.getAllDogbreeds();
     }
-    function getAlldogBreedsACB(){
-        props.getAllDogbreeds
+    function changeTextACB(){
+        props.changetext();
     }
+
     
     return(
         <div>
+            <button onClick={getDogBreedDataACB}>get data</button>
             <span>{props.text}</span>
+            <button onClick={changeTextACB}>change text</button>
         </div>
     );
 
