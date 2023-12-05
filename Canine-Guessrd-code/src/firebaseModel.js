@@ -1,8 +1,8 @@
-import { initializeApp } from "firebase/app";
-import firebaseConfig from "/src/firebaseConfig.js";
-import { getDatabase, ref, get, set, onValue, child, onChildAdded, onChildRemoved, off} from "firebase/database";
+// firebaseModel.js
+import { getDatabase } from 'firebase/database';
+import { app } from './firebaseConfig'; // Adjust the relative path as necessary.
 
-// Initialise firebase app, database, ref
-const app= initializeApp(firebaseConfig)
-const db= getDatabase(app)
-const PATH="canineGuessrd";
+// Function to get the Firebase Realtime Database reference.
+const getDbReference = () => getDatabase(app);
+
+export { getDbReference };
