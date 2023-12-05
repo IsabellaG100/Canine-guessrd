@@ -6,5 +6,9 @@ export default observer(
             <TestView text={props.model.text}/>
         );
 
+        function showDogbreedDescHandlerACB(){
+            return props.model.setText()
+        }
+
     }
 ) 

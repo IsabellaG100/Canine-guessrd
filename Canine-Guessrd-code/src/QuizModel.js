@@ -1,9 +1,17 @@
 import {getDogBreed} from "./dogBreedSource.js"
+import resolvePromise from "./resolvePromise.js";
 
 export default {
-    text: "Nu funkar det",
+    dogBreed: [],
+    dogBreedPromiseState: {},
+    text: resolvePromise(getDogBreed(), dogBreedPromiseState),
     
-    setText(simpleText){
-        this.text = getDogBreed();
+
+    getallDogBreeds(){
+        this.dogBreed = resolvePromise(getDogBreed(), this.dogBreedPromiseState);
+    },
+
+    setText(ex_string){
+        this.text = ex_string
     }
 }
