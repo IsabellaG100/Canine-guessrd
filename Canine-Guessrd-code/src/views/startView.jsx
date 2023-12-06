@@ -3,7 +3,11 @@ function StartView(props){
         <div>
             {//Button to Leaderboard, might have to change prop
             }
-            <button onClick={props.goToLeaderboard}>{props.leaderboardLogo}</button>
+            <div>
+                <button onClick={props.goToLeaderboard}>
+                    <image src="#"></image>
+                </button>
+            </div>
 
             {// Logo image, must decide where we want to store it
             }
