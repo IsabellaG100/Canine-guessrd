@@ -1,17 +1,23 @@
 function StartView(props){
+
+    function leaderboardACB(){
+        window.location.hash = "#/leaderboard"
+    }
+
     return(
         <div>
             {//Button to Leaderboard, might have to change prop
             }
             <div>
-                <button onClick={props.goToLeaderboard}>
-                    <image src="#"></image>
+                <button onClick={leaderboardACB}>
+                    <img src="../src/assets/trophyIcon.svg"></img>
                 </button>
             </div>
 
             {// Logo image, must decide where we want to store it
             }
-            <img src="image"></img>
+            <img src = "../src/assets/logo.svg"
+                 height = {400}/>
 
             <div>
                 {//Login buttons, must decide if login is a prop or a function in this file??

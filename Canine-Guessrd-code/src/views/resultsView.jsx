@@ -26,11 +26,12 @@ export default function ResultsView(props){
         <div>
 
             <button onClick = {leaderboardACB}>
-                <img src = "#"/>
+                <img src = "../src/assets/trophyIcon.svg"/>
             </button>
 
             <button onClick = {homepageACB}>
-                <img src = "#"/>
+                <img src = "../src/assets/logo.svg"
+                     height = {60}/>
             </button>
 
             <h1>Score: {/*props.placeholder.score*/} </h1>

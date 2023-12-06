@@ -1,7 +1,7 @@
 export default function LeaderboardView(props){
 
     function backACB(){
-        window.location.hash = "#/"
+        history.back()
     }
 
     function homepageACB(){
@@ -15,7 +15,8 @@ export default function LeaderboardView(props){
             </button>
 
             <button onClick = {homepageACB}>
-                <img src = "#"/>
+                <img src = "../src/assets/logo.svg"
+                     height = {60}/>
             </button>
 
             <h1>Leaderboard</h1>

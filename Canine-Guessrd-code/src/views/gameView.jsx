@@ -4,9 +4,9 @@ import Select from "react-select";
 
 function GameView(props){
 
-    function returnToStartCB(){
-        // Add functionality, should pause the game and give a popup
-    };
+    function homepageACB(){
+        window.location.hash = "#/"
+    }
 
     function guessCB(){
         // Add functionality, should save the guess somehow
@@ -42,7 +42,10 @@ function GameView(props){
             {//Button to start, don't know if i should do
              //a callback function here or not
             }
-            <button onClick={returnToStartCB}>{props.logoSmall}</button>
+            <button onClick={homepageACB}>
+                <img src = "../src/assets/logo.svg"
+                     height = {60}/>
+            </button>
 
             <div>
                 {// Image of dog, have to decide propname/path
