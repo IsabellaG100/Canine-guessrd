@@ -46,11 +46,11 @@ export default function ResultsView(props){
                 <span>
                     <p>
                         Breed: {/*props.placeholder.breedGuess[slide_i]*/}
-                        <p>{/*props.placeholder.correctBreed[slide_i]*/}</p>
+                        <div>{/*props.placeholder.correctBreed[slide_i]*/}</div>
                     </p>
                     <p>
                         Origin: {/*props.placeholder.originGuess[slide_i]*/}
-                        <p>{/*props.placeholder.correctOrigin[slide_i]*/}</p>
+                        <div>{/*props.placeholder.correctOrigin[slide_i]*/}</div>
                     </p>
                 </span>
 
