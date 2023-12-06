@@ -11,7 +11,7 @@ export default function LeaderboardView(props){
     return (
         <div>
             <button onClick = {backACB}>
-                &lt;
+                <img src = "../src/assets/backIcon.svg"/>
             </button>
 
             <button onClick = {homepageACB}>

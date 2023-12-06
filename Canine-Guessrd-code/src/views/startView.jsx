@@ -4,6 +4,11 @@ function StartView(props){
         window.location.hash = "#/leaderboard"
     }
 
+    //temporary
+    function startGameACB(){
+        window.location.hash = "#/game"
+    }
+
     return(
         <div>
             {//Button to Leaderboard, might have to change prop
@@ -23,6 +28,10 @@ function StartView(props){
                 {//Login buttons, must decide if login is a prop or a function in this file??
                 }
                 <button onClick={props.login}>Log in</button>
+                
+                {/*temporary*/}
+                <button onClick={startGameACB}>Start</button>
+
                 <button onClick={props.login}>Register</button>
             </div>
         </div>

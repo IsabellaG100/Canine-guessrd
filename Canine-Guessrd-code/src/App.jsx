@@ -44,22 +44,6 @@ function App() {
   return (
     <div>
       
-          {/*Shortcuts, remove later */}
-          <div>
-            <a href="#/">go to start</a>
-          </div>
-          <div>
-            <a href="#/start">go to start</a> 
-          </div>
-          <div>
-            <a href="#/leaderboard">go to leaderboard</a> 
-          </div>
-          <div>
-            <a href="#/game">go to game</a> 
-          </div>
-          <div>
-            <a href="#/results">go to results</a> 
-          </div>
 
 
       <RouterProvider router={makeRouter(/*model*/)}/> 
