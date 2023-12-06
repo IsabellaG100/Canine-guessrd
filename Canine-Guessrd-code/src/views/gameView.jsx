@@ -1,3 +1,7 @@
+import { useState } from "react";
+import Select from "react-select";
+
+
 function GameView(props){
 
     function returnToStartCB(){
@@ -7,7 +11,31 @@ function GameView(props){
     function guessCB(){
         // Add functionality, should save the guess somehow
         // and go to next game
+        // and give scores??
     };
+
+    function handleSelectBreed(breed) {
+        // Göra funktionen nedan till en prop?
+        setSelectedOptionsBreed(breed);
+    };
+
+    function handleSelectOrigin(origin) {
+        // Göra funtionen nedan till en prop?
+        setSelectedOptionsOrigin(origin);
+    };
+
+    // Gör detta till en prop, behöver en för breeds
+    // och en för origins
+    const optionList = [
+        { value: "red", label: "Red" },
+        { value: "green", label: "Green" },
+        { value: "yellow", label: "Yellow" },
+        { value: "blue", label: "Blue" },
+        { value: "white", label: "White" }
+    ];
+
+    const [selectedOptionBreed, setSelectedOptionsBreed] = useState();
+    const [selectedOptionOrigin, setSelectedOptionsOrigin] = useState();
 
     return(
         <div>
@@ -23,13 +51,34 @@ function GameView(props){
                 
                 {//Change span to something else?
                 }
-                <span>Breed: LÄGG TILL DROPDOWNMENY HÄR</span>
-                <span>Origin: LÄGG TILL DROPDOWNMENY HÄR</span>
+                <div>
+                    <h2>Breed:</h2>
+                    <div>
+                        <Select
+                            options={optionList} 
+                            placeholder="Select Breed"
+                            value={selectedOptionBreed}
+                            onChange={handleSelectBreed}
+                            isSearchable={true}
+                        />
+                    </div>
+
+                    <h2>Origin:</h2>
+                    <div>
+                        <Select
+                            options={optionList} 
+                            placeholder="Select Origin"
+                            value={selectedOptionOrigin}
+                            onChange={handleSelectOrigin}
+                            isSearchable={true}
+                        />
+                    </div>
+                </div>
             </div>
 
             {//Need to figure out how to do the timer
             }
-            <span>{props.timer}</span>
+            <span>TIMER{props.timer}</span>
             <button onClick={guessCB}>Guess</button>
         </div>
     );
