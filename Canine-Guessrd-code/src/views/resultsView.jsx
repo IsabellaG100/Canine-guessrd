@@ -39,7 +39,8 @@ export default function ResultsView(props){
             <div>
                 <button onClick = {previousACB}
                         disabled = {slide_i === 0}>
-                    &lt;
+                    <img src = "../src/assets/backIcon.svg"
+                         height = {20}/>
                 </button>
 
                 <img src = "#"/>
@@ -57,7 +58,8 @@ export default function ResultsView(props){
 
                 <button onClick = {nextACB}
                         disabled = {slide_i === props.length}>
-                    &gt;
+                    <img src = "../src/assets/nextIcon.svg"
+                         height = {20}/>
                 </button>
 
             </div>

@@ -12,6 +12,10 @@ function GameView(props){
         // Add functionality, should save the guess somehow
         // and go to next game
         // and give scores??
+
+        // temporary:
+        window.location.hash = "#/results"
+
     };
 
     function handleSelectBreed(breed) {
