@@ -10,6 +10,10 @@ export default function ResultsView(props){
         window.location.hash = "#/"
     }
 
+    function startGameACB(){
+        window.location.hash = "#/"
+    }
+
     function previousACB(){
         slide_i -= 1
     }
@@ -56,6 +60,14 @@ export default function ResultsView(props){
                 </button>
 
             </div>
+
+            <button onClick = {startGameACB}>
+                Play again
+            </button>
+
+            <button onClick = {homepageACB}>
+                Quit
+            </button>
 
         </div>
     )
