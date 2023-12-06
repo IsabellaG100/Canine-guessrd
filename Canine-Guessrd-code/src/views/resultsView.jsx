@@ -3,15 +3,15 @@ export default function ResultsView(props){
     const slide_i = 0
 
     function leaderboardACB(){
-        window.location.hash = "#/"
+        window.location.hash = "#/leaderboard"
     }
 
     function homepageACB(){
-        window.location.hash = "#/"
+        window.location.hash = "#/start"
     }
 
     function startGameACB(){
-        window.location.hash = "#/"
+        window.location.hash = "#/game"
     }
 
     function previousACB(){

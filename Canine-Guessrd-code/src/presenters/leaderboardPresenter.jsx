@@ -1,4 +1,4 @@
-import LeaderboardView from "/Users/alicetsoi/Documents/iprog/Canine-Guessrd/Canine-Guessrd-code/src/views/leaderboardView.jsx"
+import LeaderboardView from "../views/leaderboardView"
 
 export default function Leaderboard(props){
     return <LeaderboardView />
