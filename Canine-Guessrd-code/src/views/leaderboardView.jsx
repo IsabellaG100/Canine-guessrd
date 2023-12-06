@@ -11,7 +11,7 @@ export default function LeaderboardView(props){
     return (
         <div>
             <button onClick = {backACB}>
-                
+                &lt;
             </button>
 
             <button onClick = {homepageACB}>
