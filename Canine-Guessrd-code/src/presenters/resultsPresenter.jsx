@@ -1,4 +1,4 @@
-import ResultsView from "/Users/alicetsoi/Documents/iprog/Canine-Guessrd/Canine-Guessrd-code/src/views/resultsView.jsx"
+import ResultsView from "../views/resultsView"
 
 export default function Results(props){
     return <ResultsView />
