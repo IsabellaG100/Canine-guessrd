@@ -18,7 +18,7 @@ export function getDogBreed(){
         return response.json().then((jsonData)=> {
             console.log("Parsed JSON data: ", jsonData);
 
-            return jsonData;
+            return [...jsonData];
         });
     }
 }
