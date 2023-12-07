@@ -1,31 +1,50 @@
-// LeaderboardView.jsx
-// This component shows the leaderboard of the CanineGuessrd app.
+export default function LeaderboardView(props){
 
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchLeaderboard } from '../models/actions/leaderboardActions';
+    function backACB(){
+        history.back()
+    }
 
-const LeaderboardView = () => {
-    const dispatch = useDispatch();
-    const { leaderboardData, loading, error } = useSelector(state => state.leaderboard);
-
-    useEffect(() => {
-        dispatch(fetchLeaderboard());
-    }, [dispatch]);
-
-    if (loading) return <p>Loading leaderboard...</p>;
-    if (error) return <p>Error loading leaderboard: {error}</p>;
+    function homepageACB(){
+        window.location.hash = "#/"
+    }
 
     return (
         <div>
-            <h1>Leaderboard</h1>
-            <ul>
-                {leaderboardData.map((entry, index) => (
-                    <li key={index}>{entry.username}: {entry.score}</li>
-                ))}
-            </ul>
-        </div>
-    );
-};
 
-export default LeaderboardView;
+            <div className = "leaderboardDiv">
+                <button onClick = {backACB}
+                        className = "backButton">
+                    <img src = "../src/assets/backIcon.svg"
+                         height = {30}/>
+                </button>
+            </div>
+
+            <div className = "minilogoDiv">
+                <button onClick = {homepageACB}
+                        className = "minilogoButton">
+                    <img src = "../src/assets/logo.svg"
+                        height = {60}/>
+                </button>
+            </div>
+
+            <h1>Leaderboard</h1>
+            <table>
+                <tbody>
+                    {/*props.placeholder.map(playersTableRowCB)*/}
+                </tbody>
+            </table>
+
+        </div>
+    )
+
+    function playersTableRowCB(placeholder){
+        return <tr key = {placeholder.id} >
+            <td>
+                {/*placeholder.name*/}
+            </td>
+            <td>
+                {/*placeholder.highscore*/}
+            </td>
+        </tr>
+    }
+}
