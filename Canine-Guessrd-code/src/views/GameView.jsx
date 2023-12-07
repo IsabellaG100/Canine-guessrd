@@ -47,18 +47,18 @@ function GameView(props){
              //a callback function here or not
             }
             <div className = "minilogoDiv">
-                <button onClick={homepageACB}
+                <button onClick = {homepageACB}
                         className = "minilogoButton">
                     <img src = "../src/assets/logo.svg"
                         height = {60}/>
                 </button>
             </div>
 
-            <div className="game">
+            <div className = "game">
                 {// Image of dog, have to decide propname/path
                 }
-                <div className="dogImage">
-                    <img src="../src/assets/logo.svg"
+                <div className = "dogImage">
+                    <img src = {props.dogArray[1].imgThumb}
                          height = {200}/>
                 </div>
                 

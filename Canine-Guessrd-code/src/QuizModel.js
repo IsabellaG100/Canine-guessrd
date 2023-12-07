@@ -98,13 +98,16 @@ export default {
     They are put in the variable choosenDogs if it is not already filled, otherviwse the function returns the choosenDogs variable
     choosenDogs is an array with dictionary objects of the dogs (dogbreed, origin, img) that is going to be used in the game turn
     */
-    getChoosenDogs(randomIndexArray){
-        if(this.choosenDogs === null && randomIndexArray!== null){
-            this.choosenDogs = randomIndexArray.map(index => this.useableDogData[index])
+    getChoosenDogs(){
+        
+        if(this.choosenDogs === null && this.RandomArrayDogIndex!== null){
+            this.choosenDogs = this.RandomArrayDogIndex.map(index => this.dogBreedPromiseState.data[index])
+            console.log(this.choosenDogs)
             return this.choosenDogs
         }
         
         if(this.choosenDogs !== null){
+            console.log(this.choosenDogs)
             return this.choosenDogs
         }   
     },
@@ -117,7 +120,6 @@ export default {
         this.RandomArrayDogIndex = Array.from({length:100}, ()=> {
             return Math.floor(Math.random()*380)
         });
-    
     },
 
 
