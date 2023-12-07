@@ -24,15 +24,20 @@ export default function ResultsView(props){
 
     return (
         <div>
-
-            <button onClick = {leaderboardACB}>
-                <img src = "../src/assets/trophyIcon.svg"/>
-            </button>
-
-            <button onClick = {homepageACB}>
-                <img src = "../src/assets/logo.svg"
-                     height = {60}/>
-            </button>
+            <div className = "leaderboardDiv">
+                <button onClick = {leaderboardACB}
+                        className = "leaderboardButton">
+                    <img src = "../src/assets/trophyIcon.svg"
+                         height = {35}/>
+                </button>
+            </div>
+            <div className = "minilogoDiv">
+                <button onClick = {homepageACB}
+                        className = "minilogoButton">
+                    <img src = "../src/assets/logo.svg"
+                        height = {60}/>
+                </button>
+            </div>
 
             <h1>Score: {/*props.placeholder.score*/} </h1>
 

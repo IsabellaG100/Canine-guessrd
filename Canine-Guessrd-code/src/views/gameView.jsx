@@ -46,10 +46,13 @@ function GameView(props){
             {//Button to start, don't know if i should do
              //a callback function here or not
             }
-            <button onClick={homepageACB}>
-                <img src = "../src/assets/logo.svg"
-                     height = {60}/>
-            </button>
+            <div className = "minilogoDiv">
+                <button onClick={homepageACB}
+                        className = "minilogoButton">
+                    <img src = "../src/assets/logo.svg"
+                        height = {60}/>
+                </button>
+            </div>
 
             <div>
                 {// Image of dog, have to decide propname/path

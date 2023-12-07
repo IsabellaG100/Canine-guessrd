@@ -1,3 +1,5 @@
+import "/src/App.css"
+
 function StartView(props){
 
     function leaderboardACB(){
@@ -13,9 +15,11 @@ function StartView(props){
         <div>
             {//Button to Leaderboard, might have to change prop
             }
-            <div>
-                <button onClick={leaderboardACB}>
-                    <img src="../src/assets/trophyIcon.svg"></img>
+            <div className = "leaderboardDiv">
+                <button onClick={leaderboardACB}
+                        className = "leaderboardButton">
+                    <img src = "../src/assets/trophyIcon.svg"
+                         height = {35}/>
                 </button>
             </div>
 
