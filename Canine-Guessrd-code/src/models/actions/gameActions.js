@@ -1,56 +1,62 @@
-// Define the action type constants
-export const FETCH_BREED_REQUEST = 'FETCH_BREED_REQUEST';
-export const FETCH_BREED_SUCCESS = 'FETCH_BREED_SUCCESS';
-export const FETCH_BREED_FAILURE = 'FETCH_BREED_FAILURE';
+// gameActions.js
+// Actions for managing game logic in the CanineGuessrd app.
+// Includes fetching dog data, submitting answers, updating the timer, and managing game scores.
+
+import { fetchBreedInfo } from '../../dogApiService';
+
+// Action type constants
+export const FETCH_DOG_DATA_REQUEST = 'FETCH_DOG_DATA_REQUEST';
+export const FETCH_DOG_DATA_SUCCESS = 'FETCH_DOG_DATA_SUCCESS';
+export const FETCH_DOG_DATA_FAILURE = 'FETCH_DOG_DATA_FAILURE';
 export const SUBMIT_ANSWER = 'SUBMIT_ANSWER';
 export const UPDATE_TIMER = 'UPDATE_TIMER';
-export const END_GAME = 'END_GAME';
+export const UPDATE_SCORE = 'UPDATE_SCORE';
 
-// Action creators for fetching breed information
-export const fetchBreedRequest = () => {
-    return { type: FETCH_BREED_REQUEST };
-};
+// Action creator for initiating a request to fetch dog data
+export const fetchDogDataRequest = () => ({
+    type: FETCH_DOG_DATA_REQUEST
+});
 
-export const fetchBreedSuccess = (breedData) => {
-    return { type: FETCH_BREED_SUCCESS, payload: breedData };
-};
+// Action creator for successful dog data fetch
+export const fetchDogDataSuccess = dogData => ({
+    type: FETCH_DOG_DATA_SUCCESS,
+    payload: dogData
+});
 
-export const fetchBreedFailure = (error) => {
-    return { type: FETCH_BREED_FAILURE, payload: error };
+// Action creator for failed dog data fetch
+export const fetchDogDataFailure = error => ({
+    type: FETCH_DOG_DATA_FAILURE,
+    payload: error
+});
+
+// Async action creator for fetching dog data from DogBreedDB
+export const fetchDogData = () => async dispatch => {
+    dispatch(fetchDogDataRequest());
+    try {
+        const data = await fetchBreedInfo();
+        dispatch(fetchDogDataSuccess(data));
+    } catch (error) {
+        dispatch(fetchDogDataFailure(error.message));
+    }
 };
 
 // Action creator for submitting an answer
-export const submitAnswer = (answer) => {
-    return { type: SUBMIT_ANSWER, payload: answer };
-};
+export const submitAnswer = answer => ({
+    type: SUBMIT_ANSWER,
+    payload: answer
+});
 
-// Action creator for updating the timer
-export const updateTimer = () => {
-    return { type: UPDATE_TIMER };
-};
+// Action creator for updating the game timer
+export const updateTimer = time => ({
+    type: UPDATE_TIMER,
+    payload: time
+});
 
-// Action creator for ending the game
-export const endGame = () => {
-    return { type: END_GAME };
-};
+// Action creator for updating the game score
+export const updateScore = score => ({
+    type: UPDATE_SCORE,
+    payload: score
+});
 
-// Async action creator for fetching breed information from the DogBreedDB API
-export const fetchBreed = () => async (dispatch) => {
-    dispatch(fetchBreedRequest());
-    const url = 'https://dogbreeddb.p.rapidapi.com/?ordering=-breedName';
-    const options = {
-        method: 'GET',
-        headers: {
-            'X-RapidAPI-Key': '***REMOVED***',
-            'X-RapidAPI-Host': 'dogbreeddb.p.rapidapi.com'
-        }
-    };
-
-    try {
-        const response = await fetch(url, options);
-        const result = await response.json();
-        dispatch(fetchBreedSuccess(result));
-    } catch (error) {
-        dispatch(fetchBreedFailure(error.message));
-    }
-};
+// These actions enable the app to handle different aspects of the game like fetching dog data,
+// responding to player answers, keeping track of time, and updating scores.

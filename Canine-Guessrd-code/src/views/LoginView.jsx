@@ -1,14 +1,21 @@
 // LoginView.jsx
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom'; // Needed for navigation
-import { loginUser, registerUser, guestLogin } from '../models/actions/authActions';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { loginUser, guestLogin, googleOAuthLogin } from '../models/actions/authActions';
 
 const LoginView = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
-    const navigate = useNavigate(); // Hook for navigation
+    const navigate = useNavigate();
+    const auth = useSelector((state) => state.auth); // Accessing the auth state
+
+    useEffect(() => {
+        if (auth.user) {
+            navigate('/home'); // Navigate to HomeView if user is authenticated
+        }
+    }, [auth.user, navigate]);
 
     // Handle user login submission
     const handleLogin = (e) => {
@@ -16,23 +23,26 @@ const LoginView = () => {
         dispatch(loginUser(email, password));
     };
 
-    // Handle new user registration
-    const handleRegister = (e) => {
-        e.preventDefault();
-        dispatch(registerUser(email, password));
+    // Handle Google OAuth login
+    const handleGoogleLogin = () => {
+        dispatch(googleOAuthLogin());
+    };
+
+    // Navigate to the RegisterView
+    const handleNavigateToRegister = () => {
+        navigate('/register');
     };
 
     // Handle playing as guest, navigate to HomeView
-    const handleGuest = (e) => {
-        e.preventDefault();
-        dispatch(guestLogin()); // Dispatch the guest login action
-        navigate('/home'); // Navigate to the home route
+    const handleGuest = () => {
+        dispatch(guestLogin());
+        navigate('/home');
     };
 
     return (
         <div>
             <h1>Login</h1>
-            <form>
+            <form onSubmit={handleLogin}>
                 <input
                     type="email"
                     value={email}
@@ -45,10 +55,11 @@ const LoginView = () => {
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="Enter password"
                 />
-                <button onClick={handleLogin}>Login</button>
-                <button onClick={handleRegister}>Register</button>
-                <button onClick={handleGuest}>Play as Guest</button>
+                <button type="submit">Login</button>
             </form>
+            <button onClick={handleNavigateToRegister}>Register</button>
+            <button onClick={handleGuest}>Play as Guest</button>
+            <button onClick={handleGoogleLogin}>Login with Google</button> 
         </div>
     );
 };

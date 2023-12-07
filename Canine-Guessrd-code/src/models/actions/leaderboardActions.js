@@ -1,44 +1,53 @@
-import { getFirestore, collection, getDocs, addDoc } from 'firebase/firestore';
-import { app } from '../../firebaseConfig'; 
+// leaderboardActions.js
+// Actions for handling the leaderboard in the CanineGuessrd app.
+// Includes fetching and updating leaderboard data, and handling errors, all using firebaseService.js.
 
-// Initialize Firestore
-const db = getFirestore(app);
+import { getLeaderboardData, setLeaderboardData, updateLeaderboardData } from '../../firebaseService';
 
-// Define the action type constants for the leaderboard
+// Action type constants for leaderboard operations
 export const FETCH_LEADERBOARD_REQUEST = 'FETCH_LEADERBOARD_REQUEST';
 export const FETCH_LEADERBOARD_SUCCESS = 'FETCH_LEADERBOARD_SUCCESS';
 export const FETCH_LEADERBOARD_FAILURE = 'FETCH_LEADERBOARD_FAILURE';
 export const UPDATE_LEADERBOARD = 'UPDATE_LEADERBOARD';
 
-// Action creators
-export const fetchLeaderboardRequest = () => ({ type: FETCH_LEADERBOARD_REQUEST });
-export const fetchLeaderboardSuccess = (leaderboardData) => ({ type: FETCH_LEADERBOARD_SUCCESS, payload: leaderboardData });
-export const fetchLeaderboardFailure = (error) => ({ type: FETCH_LEADERBOARD_FAILURE, payload: error });
-export const updateLeaderboard = (newEntry) => ({ type: UPDATE_LEADERBOARD, payload: newEntry });
+// Action creator for initiating a leaderboard data fetch request
+export const fetchLeaderboardRequest = () => ({
+    type: FETCH_LEADERBOARD_REQUEST
+});
+
+// Action creator for successful leaderboard data fetch
+export const fetchLeaderboardSuccess = leaderboardData => ({
+    type: FETCH_LEADERBOARD_SUCCESS,
+    payload: leaderboardData
+});
+
+// Action creator for failed leaderboard data fetch
+export const fetchLeaderboardFailure = error => ({
+    type: FETCH_LEADERBOARD_FAILURE,
+    payload: error
+});
 
 // Async action creator for fetching leaderboard data
-export const fetchLeaderboard = () => async (dispatch) => {
+export const fetchLeaderboard = () => async dispatch => {
     dispatch(fetchLeaderboardRequest());
     try {
-        const leaderboardRef = collection(db, 'leaderboard');
-        const snapshot = await getDocs(leaderboardRef);
-        const leaderboardData = snapshot.docs.map(doc => ({
-            id: doc.id,
-            ...doc.data()
-        }));
-        dispatch(fetchLeaderboardSuccess(leaderboardData));
+        getLeaderboardData(data => {
+            dispatch(fetchLeaderboardSuccess(data));
+        });
     } catch (error) {
         dispatch(fetchLeaderboardFailure(error.message));
     }
 };
 
-// Async action creator for updating the leaderboard
-export const addLeaderboardEntry = (entry) => async (dispatch) => {
+// Action creator for updating the leaderboard
+export const updateLeaderboard = (userId, data) => async dispatch => {
     try {
-        const leaderboardRef = collection(db, 'leaderboard');
-        const docRef = await addDoc(leaderboardRef, entry);
-        dispatch(updateLeaderboard({ id: docRef.id, ...entry }));
+        await updateLeaderboardData(userId, data);
+        dispatch(fetchLeaderboard()); // Re-fetch leaderboard data to update the state
     } catch (error) {
-        console.error('Error adding document: ', error);
+        dispatch(fetchLeaderboardFailure(error.message));
     }
 };
+
+// These actions enable the app to handle the leaderboard, showing players' scores,
+// and keeping the information up-to-date and accurate.

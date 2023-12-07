@@ -1,23 +1,34 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { loginUser } from '../models/actions/authActions';
+// AuthPresenter.js
+// This presenter handles the logic related to authentication in the CanineGuessrd app.
 
-// useAuth is a custom hook that provides authentication functionality.
-// It uses useSelector to access the auth state from the Redux store.
-// useDispatch provides the ability to dispatch actions to the store.
-export const useAuth = () => {
+import { useDispatch, useSelector } from 'react-redux';
+import { loginUser, registerUser, logoutUser } from './actions/authActions';
+
+const useAuthPresenter = () => {
     const dispatch = useDispatch();
-    const auth = useSelector((state) => state.auth);
+    const authState = useSelector(state => state.auth);
 
-    // handleLogin wraps the loginUser action dispatcher.
-    // It can be called from components to initiate the login process.
+    // Function to handle user login
     const handleLogin = (email, password) => {
         dispatch(loginUser(email, password));
     };
 
-    // The hook returns the auth state and the handleLogin function
-    // so components can display auth status and trigger login.
+    // Function to handle user registration
+    const handleRegister = (email, password) => {
+        dispatch(registerUser(email, password));
+    };
+
+    // Function to handle user logout
+    const handleLogout = () => {
+        dispatch(logoutUser());
+    };
+
     return {
-        auth,
+        ...authState,
         handleLogin,
+        handleRegister,
+        handleLogout
     };
 };
+
+export default useAuthPresenter;
