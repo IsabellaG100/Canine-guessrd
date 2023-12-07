@@ -15,11 +15,11 @@ export default function ResultsView(props){
     }
 
     function previousACB(){
-        slide_i -= 1
+        /*slide_i -= 1*/
     }
 
     function nextACB(){
-        slide_i += 1
+        /*slide_i += 1*/
     }
 
     return (
