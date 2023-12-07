@@ -19,11 +19,10 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<Navigate replace to="/login" />} />
                         <Route path="/login" element={<LoginView />} />
-                        <Route path="/register" element={<RegisterView />} /> {/* Make sure this line is added */}
+                        <Route path="/register" element={<RegisterView />} />
                         <Route path="/home" element={<HomeView />} />
                         <Route path="/game" element={<GameView />} />
                         <Route path="/leaderboard" element={<LeaderboardView />} />
-                        {/* Add other routes if needed */}
                     </Routes>
                 </div>
             </Router>
@@ -76,9 +75,6 @@ function makeRouter(model){
 function App() {
   return (
     <div>
-      
-
-
       <RouterProvider router={makeRouter(/*model*/)}/> 
     </div>
   )

@@ -4,11 +4,9 @@ import './index.css'
 import "/src/firebaseModel.js"
 import App from './App.jsx'
 
-ReactDOM.createRoot(document.getElementById('root')).render
-(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <App model={reactiveModel} />
+    <App/>
   </React.StrictMode>,
 )
 
-window.myModel = reactiveModel;
