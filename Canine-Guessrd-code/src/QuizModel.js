@@ -60,6 +60,10 @@ export default {
         }else{
             throw new Error ("either origin or breed has not been guessed")}
     },
+
+    getDogBreedList(){
+
+    },
     /*
     returns this.choosenDogbreeds which is an array of dog objects with only 2 attributes, 
     value: dog id (int)
@@ -125,18 +129,17 @@ export default {
     Calls the API if it data haven't been retrieved yet. The data (JSON array)
     will be stored in this.dogBreedPromiseState.data
     */
-    getAllData() {
+    getDataFromAPI() {
         if (this.dogBreedPromiseState.data === undefined){
             resolvePromise(getDogBreed(), this.dogBreedPromiseState)
-        }else{
-            this.useableDogData = this.dogBreedPromiseState.data.filter(removeNoRequiredDataCB)
+        }
+            /*this.useableDogData = this.dogBreedPromiseState.data.filter(removeNoRequiredDataCB)
             console.log(this.useableDogData)
             console.log(this.generateRandomArrayOfIndex())
             console.log(this.getArrayofRandomDogIndex())
             console.log(this.getChoosenDogs(this.RandomArrayDogIndex))
-            console.log(this.getChoosenDogBreeds(this.choosenDogs))
+            console.log(this.getChoosenDogBreeds(this.choosenDogs))*/
             
-        }   
       },
 
     setText(ex_string){
