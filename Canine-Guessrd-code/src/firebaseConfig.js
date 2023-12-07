@@ -1,3 +1,8 @@
+// Import the function to initialize the app from Firebase SDK.
+import { initializeApp } from 'firebase/app';
+
+// Firebase configuration for the Canine Guessrd project.
+// These settings are specific to this Firebase project and are used to connect to Firebase services.
 const firebaseConfig = {
     apiKey: "AIzaSyBAVWt76yzIYiMnAdUQfCkAKVHN9iPabXo",
     authDomain: "canine-guessrd.firebaseapp.com",
@@ -9,4 +14,10 @@ const firebaseConfig = {
     measurementId: "G-MJ16HXH459"
   };
 
-  export default firebaseConfig;
+
+// Initialize the Firebase app instance with the provided configuration settings.
+// This 'app' instance is what we'll use to interact with Firebase services.
+const app = initializeApp(firebaseConfig);
+
+// Export the 'app' instance so that it can be imported and used in other parts of our application.
+export { app };
