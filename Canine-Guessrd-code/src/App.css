@@ -25,3 +25,15 @@
 .minilogoButton{
   background-color: transparent;
 }
+
+.game{
+  display: flex;
+  flex-flow: row;
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+}
+
+.dogImage{
+  margin-right: 100px;
+}

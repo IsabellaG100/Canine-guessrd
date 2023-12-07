@@ -54,10 +54,13 @@ function GameView(props){
                 </button>
             </div>
 
-            <div>
+            <div className="game">
                 {// Image of dog, have to decide propname/path
                 }
-                <img src={props.imageURL}></img>
+                <div className="dogImage">
+                    <img src="../src/assets/logo.svg"
+                         height = {200}/>
+                </div>
                 
                 {//Change span to something else?
                 }
