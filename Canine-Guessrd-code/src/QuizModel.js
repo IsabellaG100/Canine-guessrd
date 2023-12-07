@@ -14,7 +14,7 @@ export default {
     useableDogData:[],
     text: "pending",
     RandomArrayDogIndex:[],
-    choosenDogs:null,
+    choosenDogs: null,
     choosenDogBreeds: null,
     choosenDogOrigin: null,
     guessedDogBreeds: [],
@@ -130,7 +130,7 @@ export default {
     will be stored in this.dogBreedPromiseState.data
     */
     getDataFromAPI() {
-        if (this.dogBreedPromiseState.data === undefined){
+        if (this.dogBreedPromiseState?.data === undefined){
             resolvePromise(getDogBreed(), this.dogBreedPromiseState)
         }
             /*this.useableDogData = this.dogBreedPromiseState.data.filter(removeNoRequiredDataCB)

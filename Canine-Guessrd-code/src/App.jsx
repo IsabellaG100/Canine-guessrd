@@ -72,10 +72,10 @@ function makeRouter(model){
 }
 
 
-function App() {
+function App(props) {
   return (
     <div>
-      <RouterProvider router={makeRouter(/*model*/)}/> 
+      <RouterProvider router={makeRouter(props.model)}/> 
     </div>
   )
 }

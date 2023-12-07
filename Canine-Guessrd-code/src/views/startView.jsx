@@ -8,6 +8,7 @@ function StartView(props){
 
     //temporary
     function startGameACB(){
+        props.getDogs()
         window.location.hash = "#/game"
     }
 

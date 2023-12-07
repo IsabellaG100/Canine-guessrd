@@ -1,4 +1,9 @@
 function resolvePromise(prms, promiseState){
+
+    if (promiseState === undefined) {
+        promiseState = {};
+    }
+
     promiseState.promise = prms;
     promiseState.data = null;
     promiseState.error = null;
