@@ -9,7 +9,7 @@ export default observer( function Game(props){
         console.log("data in game:", dogPromiseState.data)
 
 
-        if (dogPromiseState?.data){
+        if (dogPromiseState?.promise){
 
             if (dogPromiseState.data){
 

@@ -14,7 +14,7 @@ export default function LeaderboardView(props){
             <div className = "leaderboardDiv">
                 <button onClick = {backACB}
                         className = "backButton">
-                    <img src = "../src/assets/backIcon.svg"
+                    <img src = "https://svgshare.com/i/10Zg.svg"
                          height = {30}/>
                 </button>
             </div>
@@ -22,7 +22,7 @@ export default function LeaderboardView(props){
             <div className = "minilogoDiv">
                 <button onClick = {homepageACB}
                         className = "minilogoButton">
-                    <img src = "../src/assets/logo.svg"
+                    <img src = "https://svgshare.com/i/10ZE.svg"
                         height = {60}/>
                 </button>
             </div>

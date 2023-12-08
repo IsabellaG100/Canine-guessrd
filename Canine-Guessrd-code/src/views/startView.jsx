@@ -19,14 +19,14 @@ function StartView(props){
             <div className = "leaderboardDiv">
                 <button onClick={leaderboardACB}
                         className = "leaderboardButton">
-                    <img src = "../src/assets/trophyIcon.svg"
+                    <img src = "https://svgshare.com/i/10ZW.svg"
                          height = {35}/>
                 </button>
             </div>
 
             {// Logo image, must decide where we want to store it
             }
-            <img src = "../src/assets/logo.svg"
+            <img src = "https://svgshare.com/i/10ZE.svg"
                  height = {400}/>
 
             <div>
