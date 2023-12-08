@@ -37,6 +37,7 @@ import Start from './presenters/startPresenter'
 import Leaderboard from './presenters/leaderboardPresenter'
 import Game from './presenters/gamePresenter'
 import Results from './presenters/resultsPresenter'
+import { observer } from "mobx-react-lite";
 
 import {createElement} from "react"
 window.React={createElement}; // install React JSX without importing all of React
@@ -80,5 +81,4 @@ function App(props) {
   )
 }
 
-
-export default App;
+export default observer(App);

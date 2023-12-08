@@ -7,7 +7,7 @@ import App from './App.jsx'
 import model from "../src/QuizModel.js"
 import {observable, configure} from "mobx"
 
-configure({enforeActions: "never", })
+configure({enforceActions: "never", })
 
 const reactiveModel = observable(model)
 

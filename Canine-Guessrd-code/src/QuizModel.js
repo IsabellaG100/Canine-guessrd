@@ -10,7 +10,7 @@ export default {
 
     leaderboard: {},
     score: 0,
-    dogBreedPromiseState: [],
+    dogBreedPromiseState: {},
     useableDogData:[],
     text: "pending",
     RandomArrayDogIndex:[],
