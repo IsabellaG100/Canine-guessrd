@@ -51,19 +51,18 @@ export default function ResultsView(props){
 
                 <img src = "#"
                      className = "dogImage"/>
-
-                <span className = "answersTitles">
-                    <p>
+                
+                <span>
+                    <p className = "answersTitle">
                         Breed:
-                        
                     </p>
-                    <p>
+                    <p className = "answersTitle">
                         Origin: 
                     </p>
                 </span>
 
                 <span className = "answers">
-                    <span className = "breedAnswers">
+                    <span>
                         <p>
                             {/*props.placeholder.breedGuess[slide_i]*/} player answer1
                         </p>
@@ -72,7 +71,7 @@ export default function ResultsView(props){
                         </p>
                     </span>
 
-                    <span className = "originAnswers">
+                    <span>
                         <p>
                             {/*props.placeholder.originGuess[slide_i]*/} player answer2
                         </p>

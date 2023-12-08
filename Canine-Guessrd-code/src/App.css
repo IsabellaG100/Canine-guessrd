@@ -55,26 +55,13 @@
   padding: 10px 11px 6px 12px;
 }
 
-.answersTitles{
-  display: flex;
+.answersTitle{
   margin-right: 5px;
-  text-align: right;
-}
-
-.breedAnswers{
-  display: flex;
-  margin-right: 5px;
-  text-align: right;
-}
-
-.originAnswers{
-  display: flex;
-  margin-right: 5px;
+  margin-bottom: 96px;
   text-align: right;
 }
 
 .answers{
-  display: flex;
   margin-right: 5px;
-  text-align: right;
+  text-align: left;
 }
