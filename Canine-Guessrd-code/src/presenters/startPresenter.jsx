@@ -5,10 +5,10 @@ export default function Start(props){
     const navigate = useNavigate();
 
     function generateGameACB(){
-        props.model.getDataFromAPI()
-        console.log("promisestate at start", props.model.dogBreedPromiseState)
-        props.model.generateRandomArrayOfIndex()
-        console.log(props.model.RandomArrayDogIndex)
+        props.model.quiz.getDataFromAPI()
+        console.log("promisestate at start", props.model.quiz.dogBreedPromiseState)
+        props.model.quiz.generateRandomArrayOfIndex()
+        console.log(props.model.quiz.RandomArrayDogIndex)
         
     }
 

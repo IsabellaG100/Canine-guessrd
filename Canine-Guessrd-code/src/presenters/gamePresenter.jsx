@@ -13,7 +13,7 @@ export default observer( function Game(props){
 
             if (dogPromiseState.data){
 
-                return <GameView dogArray = {props.model.dogBreedPromiseState.data}/>
+                return <GameView dogArray = {props.model.quiz.dogBreedPromiseState.data}/>
             
             } else if (dogPromiseState.error){
                 return (dogPromiseState.error)
@@ -27,6 +27,6 @@ export default observer( function Game(props){
         }
     }
 
-    return gameFunction(props.model.dogBreedPromiseState)
+    return gameFunction(props.model.quiz.dogBreedPromiseState)
 }
 )

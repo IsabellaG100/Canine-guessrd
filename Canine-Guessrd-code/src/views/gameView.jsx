@@ -5,7 +5,7 @@ import Select from "react-select";
 function GameView(props){
 
     function homepageACB(){
-        window.location.hash = "#/"
+        window.location.hash = "#/start"
     }
 
     function guessCB(){

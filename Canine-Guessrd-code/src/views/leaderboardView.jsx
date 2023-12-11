@@ -5,7 +5,7 @@ export default function LeaderboardView(props){
     }
 
     function homepageACB(){
-        window.location.hash = "#/"
+        window.location.hash = "#/start"
     }
 
     return (
