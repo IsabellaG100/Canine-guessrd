@@ -7,8 +7,6 @@ export default function Start(props){
     function generateGameACB(){
         props.model.quiz.getDataFromAPI()
         console.log("promisestate at start", props.model.quiz.dogBreedPromiseState)
-        props.model.quiz.generateRandomArrayOfIndex()
-        console.log(props.model.quiz.RandomArrayDogIndex)
         
     }
 

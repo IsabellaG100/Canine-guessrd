@@ -2,7 +2,8 @@ import GameView from "../views/gameView"
 import { observer } from "mobx-react-lite";
 
 export default observer( function Game(props){
-
+    
+    
     function gameFunction(dogPromiseState){
         
         console.log("promisestate in game:", dogPromiseState)
@@ -12,8 +13,10 @@ export default observer( function Game(props){
         if (dogPromiseState?.promise){
 
             if (dogPromiseState.data){
-
-                return <GameView dogArray = {props.model.quiz.dogBreedPromiseState.data}/>
+                if(!props.model.quiz.gameStarted){
+                props.model.quiz.startGame()
+            }
+                return (<GameView dogArray = {props.model.quiz.choosenDogs} breedDict = {props.model.quiz.choosenDogBreeds}/>);
             
             } else if (dogPromiseState.error){
                 return (dogPromiseState.error)

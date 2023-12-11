@@ -1,14 +1,10 @@
 import {getDogBreed} from "../dogBreedSource.js"
 import resolvePromise from "../resolvePromise.js";
 
-function removeNoRequiredDataCB(obj){
-    return (obj.imgThumb !== null && obj.imgThumb !== "https://s3.us-west-004.backblazeb2.com/encurate/static/dogbreed/dog-default.jpg" 
-            && Number.isInteger(obj.id) === true && obj.breedName !== null && obj.origin !== null && obj.origin !== "N/A");//, "N/A");
-}
-
 export default {
 
     leaderboard: {},
+    gameStarted: false,
     score: 0,
     dogBreedPromiseState: {},
     useableDogData:[],
@@ -25,8 +21,17 @@ export default {
     Vi måste reset allt om spelare vill göra igen
     */
     startGame(){
-        pass
+        if (!this.gameStarted){
+        this.generateRandomArrayOfIndex()
+        this.getChoosenDogs()
+        this.setChoosenDogBreeds()
+        this.setChoosenDogOrigin()
+        console.log("Done with all functions this is choosenbreeds", this.choosenDogBreeds)
+        this.gameStarted = true;
+    }
+
     },
+
     /*
     Adds every guessed dog to an array with dog objects with only two attributes, id and breedName
     */
@@ -61,35 +66,38 @@ export default {
             throw new Error ("either origin or breed has not been guessed")}
     },
 
-    getDogBreedList(){
-
-    },
     /*
-    returns this.choosenDogbreeds which is an array of dog objects with only 2 attributes, 
+     sets this.choosenDogbreeds which is an array of dog objects with only 2 attributes, 
     value: dog id (int)
     label: dog breed (string)
     */
-    getChoosenDogBreeds(choosenDogs){
-        if(choosenDogs !== null){
-            this.choosenDogBreeds = choosenDogs.map(function(dict_obj){
-                return {"value": dict_obj.id,
-                        "label": dict_obj.breedName} 
+    
+    setChoosenDogBreeds(){
+        console.log("in choosen breed")
+        if(this.choosenDogs !== null){
+            this.choosenDogBreeds = this.choosenDogs.map(function(dict_obj){
+                return ({"value": dict_obj.id,
+                        "label": dict_obj.breedName}); 
             });
-            return this.choosenDogBreeds
+            console.log("got the choosen breeds", this.choosenDogBreeds)
+        }else{
+            console.log("this.choosen dogs is unfilled")
         }
     },
 
     /*
-    returns this.choosenDogOrigin which is an array of dog objects with only 2 attributes, 
+    sets this.choosenDogOrigin which is an array of dog objects with only 2 attributes, 
     value: dog id (int)
     label: dog Origin (string)    */
-    getChoosenDogOrigin(choosenDogs){
-        if(choosenDogs !== null){
-            this.choosenDogOrigin = choosenDogs.map(function(dict_obj){
-                return {"value": dict_obj.id, 
-                        "label": dict_obj.origin}
+    setChoosenDogOrigin(){
+        console.log("in choosen origin")
+        if(this.choosenDogs !== null){
+            this.choosenDogOrigin = this.choosenDogs.map(function(dict_obj){
+                return ({"value": dict_obj.id, 
+                        "label": dict_obj.origin});
             });
-            return this.choosenDogOrigin
+        }else{
+            console.log("this.choosen dogs is unfilled")
         }
     },
 
@@ -102,12 +110,12 @@ export default {
         
         if(this.choosenDogs === null && this.RandomArrayDogIndex!== null){
             this.choosenDogs = this.RandomArrayDogIndex.map(index => this.dogBreedPromiseState.data[index])
-            console.log(this.choosenDogs)
+            console.log("done with choosen dogs", this.choosenDogs)
             return this.choosenDogs
         }
         
         if(this.choosenDogs !== null){
-            console.log(this.choosenDogs)
+            console.log("return choosen dogs", this.choosenDogs)
             return this.choosenDogs
         }   
     },
