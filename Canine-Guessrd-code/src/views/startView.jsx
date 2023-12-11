@@ -30,14 +30,10 @@ function StartView(props){
                  height = {400}/>
 
             <div>
-                {//Login buttons, must decide if login is a prop or a function in this file??
-                }
-                <button onClick={props.login}>Log in</button>
                 
                 {/*temporary*/}
                 <button onClick={startGameACB}>Start</button>
-
-                <button onClick={props.login}>Register</button>
+                <button onClick={props.logout}>Log out</button>
             </div>
         </div>
     );

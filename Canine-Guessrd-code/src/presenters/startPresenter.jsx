@@ -1,6 +1,8 @@
 import StartView from "../views/startView"
+import { useNavigate } from 'react-router-dom';
 
 export default function Start(props){
+    const navigate = useNavigate();
 
     function generateGameACB(){
         props.model.getDataFromAPI()
@@ -10,5 +12,15 @@ export default function Start(props){
         
     }
 
-    return <StartView getDogs = {generateGameACB}/>
+    function handleLogout() {
+        props.model.firebase.logout() // Using logout function from props
+            .then(() => {
+                navigate('/login'); // Redirect to login view after successful logout
+            })
+            .catch((error) => {
+                console.error('Logout failed:', error);
+            });
+    }
+
+    return <StartView getDogs = {generateGameACB} logout={handleLogout}/>
 }
