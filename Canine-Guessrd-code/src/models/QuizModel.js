@@ -1,5 +1,5 @@
-import {getDogBreed} from "./dogBreedSource.js"
-import resolvePromise from "./resolvePromise.js";
+import {getDogBreed} from "../dogBreedSource.js"
+import resolvePromise from "../resolvePromise.js";
 
 function removeNoRequiredDataCB(obj){
     return (obj.imgThumb !== null && obj.imgThumb !== "https://s3.us-west-004.backblazeb2.com/encurate/static/dogbreed/dog-default.jpg" 

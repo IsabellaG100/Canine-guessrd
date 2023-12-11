@@ -1,51 +1,46 @@
-// RegisterView.jsx
-// This component renders the registration interface for the CanineGuessrd app.
-
+// registerView.jsx
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../models/actions/authActions';
 
-const RegisterView = () => {
+function RegisterView(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const [username, setUsername] = useState('');
 
-    // Handle user registration
-    const handleRegister = (e) => {
-        e.preventDefault();
-        dispatch(registerUser(email, password));
-    };
-
-    // Handle navigation back to LoginView
-    const handleBackToLogin = () => {
-        navigate('/login'); // Navigate to the login route
-    };
+    // Update state on input change
+    const handleEmailChange = (e) => setEmail(e.target.value);
+    const handlePasswordChange = (e) => setPassword(e.target.value);
+    const handleUsernameChange = (e) => setUsername(e.target.value);
 
     return (
-        <div>
+        <div className="register-container">
             <h1>Register</h1>
-            <form onSubmit={handleRegister}>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Email"
-                    required
-                />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Password"
-                    required
-                />
-                <button type="submit">Register</button>
-            </form>
-            <button onClick={handleBackToLogin}>Back to Login</button>
+            <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                onChange={handleUsernameChange}
+            />
+            <input
+                type="email"
+                placeholder="Email"
+                value={email}
+                onChange={handleEmailChange}
+            />
+            <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+            />
+            <button onClick={() => props.onRegister(email, password, username)}>Register</button>
+            <button onClick={props.onRegisterWithGoogle}>Register with Google</button>
+            <p>
+                Already have an account? 
+                <button onClick={props.onNavigateLogin}>Login</button>
+                <button onClick={props.onBackToLogin}>Back to Login</button>
+            </p>
         </div>
     );
-};
+}
 
 export default RegisterView;

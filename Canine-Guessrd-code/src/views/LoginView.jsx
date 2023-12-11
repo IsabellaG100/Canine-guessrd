@@ -1,67 +1,35 @@
-// LoginView.jsx
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { loginUser, guestLogin, googleOAuthLogin } from '../models/actions/authActions';
+// loginView.jsx
+import React, { useState } from 'react';
 
-const LoginView = () => {
+function LoginView(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const auth = useSelector((state) => state.auth); // Accessing the auth state
 
-    useEffect(() => {
-        if (auth.user) {
-            navigate('/home'); // Navigate to HomeView if user is authenticated
-        }
-    }, [auth.user, navigate]);
-
-    // Handle user login submission
-    const handleLogin = (e) => {
-        e.preventDefault();
-        dispatch(loginUser(email, password));
-    };
-
-    // Handle Google OAuth login
-    const handleGoogleLogin = () => {
-        dispatch(googleOAuthLogin());
-    };
-
-    // Navigate to the RegisterView
-    const handleNavigateToRegister = () => {
-        navigate('/register');
-    };
-
-    // Handle playing as guest, navigate to HomeView
-    const handleGuest = () => {
-        dispatch(guestLogin());
-        navigate('/home');
-    };
+    const handleEmailChange = (e) => setEmail(e.target.value);
+    const handlePasswordChange = (e) => setPassword(e.target.value);
 
     return (
-        <div>
+        <div className="login-container">
             <h1>Login</h1>
-            <form onSubmit={handleLogin}>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter email"
-                />
-                <input
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    placeholder="Enter password"
-                />
-                <button type="submit">Login</button>
-            </form>
-            <button onClick={handleNavigateToRegister}>Register</button>
-            <button onClick={handleGuest}>Play as Guest</button>
-            <button onClick={handleGoogleLogin}>Login with Google</button> 
+            <input 
+                type="email" 
+                placeholder="Email" 
+                value={email} 
+                onChange={handleEmailChange} 
+            />
+            <input 
+                type="password" 
+                placeholder="Password" 
+                value={password} 
+                onChange={handlePasswordChange} 
+            />
+            <button onClick={() => props.onLogin(email, password)}>Login</button>
+            <button onClick={props.onLoginWithGoogle}>Login with Google</button>
+            <p>
+                Don't have an account? <button onClick={props.onNavigateRegister}>Register</button>
+            </p>
         </div>
     );
-};
+}
 
 export default LoginView;
