@@ -16,7 +16,7 @@ export default observer( function Game(props){
                 if(!props.model.quiz.gameStarted){
                 props.model.quiz.startGame()
             }
-                return (<GameView dogArray = {props.model.quiz.choosenDogs} breedDict = {props.model.quiz.choosenDogBreeds}/>);
+                return (<GameView dogArray = {props.model.quiz.choosenDogs} breeds = {props.model.quiz.choosenDogBreeds} origins = {props.model.quiz.choosenDogOrigin}/>);
             
             } else if (dogPromiseState.error){
                 return (dogPromiseState.error)

@@ -30,20 +30,20 @@ export default function LeaderboardView(props){
             <h1>Leaderboard</h1>
             <table>
                 <tbody>
-                    {/*props.placeholder.map(playersTableRowCB)*/}
+                    {props.leaderboardData.map(playersTableRowCB)}
                 </tbody>
             </table>
 
         </div>
     )
 
-    function playersTableRowCB(placeholder){
-        return <tr key = {placeholder.id} >
+    function playersTableRowCB(user){
+        return <tr key = {user.id} >
             <td>
-                {/*placeholder.name*/}
+                {user.username}
             </td>
             <td>
-                {/*placeholder.highscore*/}
+                {user.highscore}
             </td>
         </tr>
     }

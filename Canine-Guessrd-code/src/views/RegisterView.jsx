@@ -7,33 +7,52 @@ function RegisterView(props) {
     const [username, setUsername] = useState('');
 
     // Update state on input change
-    const handleEmailChange = (e) => setEmail(e.target.value);
-    const handlePasswordChange = (e) => setPassword(e.target.value);
-    const handleUsernameChange = (e) => setUsername(e.target.value);
+    function handleEmailChange(e){
+        setEmail(e.target.value);
+    }
+
+    function handlePasswordChange(e){
+        setPassword(e.target.value);
+    }
+
+    function handleUsernameChange(e){
+        setUsername(e.target.value);
+    }
+
+    function homepageACB(){
+        window.location.hash = "#/login"
+    }
 
     return (
-        <div className="register-container">
+        <div className="registercontainer">
+            <div className = "minilogoDiv">
+                <button onClick = {homepageACB}
+                        className = "minilogoButton">
+                    <img src = "https://svgshare.com/i/10ZE.svg"
+                        height = {60}/>
+                </button>
+            </div>
             <h1>Register</h1>
-            <input
+            <input className='registerform'
                 type="text"
                 placeholder="Username"
                 value={username}
                 onChange={handleUsernameChange}
             />
-            <input
+            <input className='registerform'
                 type="email"
                 placeholder="Email"
                 value={email}
                 onChange={handleEmailChange}
             />
-            <input
+            <input className='registerform'
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={handlePasswordChange}
             />
-            <button onClick={() => props.onRegister(email, password, username)}>Register</button>
-            <button onClick={props.onRegisterWithGoogle}>Register with Google</button>
+            <button className='registerbuttons' onClick={() => props.onRegister(email, password, username)}>Register</button>
+            <button className='registerbuttons' onClick={props.onRegisterWithGoogle}>Register with Google</button>
             <p>
                 Already have an account? 
                 <button onClick={props.onNavigateLogin}>Login</button>

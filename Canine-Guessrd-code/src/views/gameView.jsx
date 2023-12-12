@@ -3,18 +3,21 @@ import Select from "react-select";
 
 
 function GameView(props){
+    // Lägg till object för att spara player guesses
 
     function homepageACB(){
         window.location.hash = "#/start"
     }
 
-    function guessCB(){
-        // Add functionality, should save the guess somehow
-        // and go to next game
-        // and give scores??
-
+    function guessCB(index){
+        // Lägg till loading screen när den laddar in bilden
+        const playerguesses = [selectedOptionBreed.label, selectedOptionOrigin.label]
+        setIndex(index)
+        setSelectedOptionsBreed("Select Breed")
+        setSelectedOptionsOrigin("Select Origin")
+        console.log(playerguesses)
         // temporary:
-        window.location.hash = "#/results"
+        //window.location.hash = "#/results"
 
     };
 
@@ -28,18 +31,9 @@ function GameView(props){
         setSelectedOptionsOrigin(origin);
     };
 
-    // Gör detta till en prop, behöver en för breeds
-    // och en för origins
-    const optionList = [
-        { value: "red", label: "Red" },
-        { value: "green", label: "Green" },
-        { value: "yellow", label: "Yellow" },
-        { value: "blue", label: "Blue" },
-        { value: "white", label: "White" }
-    ];
-
     const [selectedOptionBreed, setSelectedOptionsBreed] = useState();
     const [selectedOptionOrigin, setSelectedOptionsOrigin] = useState();
+    const [index, setIndex] = useState(0);
 
     return(
         <div>
@@ -58,7 +52,7 @@ function GameView(props){
                 {// Image of dog, have to decide propname/path
                 }
                 <div className = "dogImage">
-                    <img src = {props.dogArray[1].imgThumb}
+                    <img src = {props.dogArray[index].imgThumb}
                          height = {200}/>
                 </div>
                 
@@ -68,7 +62,7 @@ function GameView(props){
                     <h2>Breed:</h2>
                     <div>
                         <Select
-                            options={optionList} 
+                            options={props.breeds} 
                             placeholder="Select Breed"
                             value={selectedOptionBreed}
                             onChange={handleSelectBreed}
@@ -79,7 +73,7 @@ function GameView(props){
                     <h2>Origin:</h2>
                     <div>
                         <Select
-                            options={optionList} 
+                            options={props.origins} 
                             placeholder="Select Origin"
                             value={selectedOptionOrigin}
                             onChange={handleSelectOrigin}
@@ -92,7 +86,7 @@ function GameView(props){
             {//Need to figure out how to do the timer
             }
             <span>TIMER{props.timer}</span>
-            <button onClick={guessCB}>Guess</button>
+            <button onClick={() => guessCB(index + 1)}>Guess</button>
         </div>
     );
 }
