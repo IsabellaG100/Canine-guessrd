@@ -4,11 +4,11 @@ import resolvePromise from "../resolvePromise.js";
 export default {
 
     leaderboard: {},
+    showGame: false,
     gameStarted: false,
     score: 0,
     dogBreedPromiseState: {},
     useableDogData:[],
-    text: "pending",
     RandomArrayDogIndex:[],
     choosenDogs: null,
     choosenDogBreeds: null,
@@ -21,14 +21,13 @@ export default {
     Vi måste reset allt om spelare vill göra igen
     */
     startGame(){
-        if (!this.gameStarted){
         this.generateRandomArrayOfIndex()
         this.getChoosenDogs()
         this.setChoosenDogBreeds()
         this.setChoosenDogOrigin()
-        console.log("Done with all functions this is choosenbreeds", this.choosenDogBreeds)
-        this.gameStarted = true;
-    }
+        console.log("the first choosen dogname inside startGame",this.choosenDogs[0].breedName)
+        console.log("Inside and done with startGame")
+        this.showGame = true;
 
     },
 
@@ -73,13 +72,11 @@ export default {
     */
     
     setChoosenDogBreeds(){
-        console.log("in choosen breed")
         if(this.choosenDogs !== null){
             this.choosenDogBreeds = this.choosenDogs.map(function(dict_obj){
-                return ({"value": dict_obj.id,
+                return ({"value": dict_obj.breedName,
                         "label": dict_obj.breedName}); 
             });
-            console.log("got the choosen breeds", this.choosenDogBreeds)
         }else{
             console.log("this.choosen dogs is unfilled")
         }
@@ -90,12 +87,27 @@ export default {
     value: dog id (int)
     label: dog Origin (string)    */
     setChoosenDogOrigin(){
-        console.log("in choosen origin")
+
+        // Function to filter out duplicates based on a specific attribute
+        const filterDuplicates = (array, attribute) => {
+        const uniqueValues = [];
+        return array.filter((obj) => {
+            if (!uniqueValues.includes(obj[attribute])) {
+            uniqueValues.push(obj[attribute]);
+            return true;
+            }
+            return false;
+        });
+        };
+
+        function createObjWithOriginIdCB(dict_obj){
+            return  ({"value": dict_obj.origin, 
+                      "label": dict_obj.origin});
+        }    
+        
+
         if(this.choosenDogs !== null){
-            this.choosenDogOrigin = this.choosenDogs.map(function(dict_obj){
-                return ({"value": dict_obj.id, 
-                        "label": dict_obj.origin});
-            });
+            this.choosenDogOrigin= filterDuplicates(this.choosenDogs, 'origin').map(createObjWithOriginIdCB)
         }else{
             console.log("this.choosen dogs is unfilled")
         }
@@ -108,16 +120,18 @@ export default {
     */
     getChoosenDogs(){
         
-        if(this.choosenDogs === null && this.RandomArrayDogIndex!== null){
+       // if(this.choosenDogs === null && this.RandomArrayDogIndex!== null){
+            console.log("this is the random index array use in choosen dogs",this.RandomArrayDogIndex)
+            console.log("This should be the first dog name", this.dogBreedPromiseState.data[this.RandomArrayDogIndex[0]].breedName)
             this.choosenDogs = this.RandomArrayDogIndex.map(index => this.dogBreedPromiseState.data[index])
-            console.log("done with choosen dogs", this.choosenDogs)
+            console.log("return first choosen dog name ", this.choosenDogs[0].breedName)
             return this.choosenDogs
-        }
+      //  }
         
-        if(this.choosenDogs !== null){
+       /* if(this.choosenDogs !== null){
             console.log("return choosen dogs", this.choosenDogs)
             return this.choosenDogs
-        }   
+        }   */
     },
    
     /*
@@ -126,7 +140,7 @@ export default {
     */ 
     generateRandomArrayOfIndex(){
         this.RandomArrayDogIndex = Array.from({length:100}, ()=> {
-            return Math.floor(Math.random()*380)
+            return Math.floor(Math.random()*317)
         });
     },
 

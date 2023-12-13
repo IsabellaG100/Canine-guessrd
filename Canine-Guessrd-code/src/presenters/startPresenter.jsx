@@ -5,7 +5,9 @@ export default function Start(props){
     const navigate = useNavigate();
 
     function generateGameACB(){
+        props.model.quiz.showGame = false;
         props.model.quiz.getDataFromAPI()
+        console.log("This is the index array", props.model.quiz.RandomArrayDogIndex)
         console.log("promisestate at start", props.model.quiz.dogBreedPromiseState)
         
     }
