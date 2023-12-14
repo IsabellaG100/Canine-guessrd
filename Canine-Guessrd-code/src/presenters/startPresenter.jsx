@@ -13,10 +13,10 @@ export default function Start(props){
       }, [props.model, navigate]);
 
     function generateGameACB(){
-        props.model.getDataFromAPI()
+        props.model.quiz.getDataFromAPI()
         console.log("promisestate at start", props.model.dogBreedPromiseState)
-        props.model.generateRandomArrayOfIndex()
-        console.log(props.model.RandomArrayDogIndex)
+        props.model.quiz.generateRandomArrayOfIndex()
+        console.log(props.model.quiz.RandomArrayDogIndex)
         
     }
 
