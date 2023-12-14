@@ -1,8 +1,16 @@
 import GameView from "../views/gameView"
 import { observer } from "mobx-react-lite";
+import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react';
 
 export default observer( function Game(props){
-    
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!props.model.firebase.isAuthenticated()) {
+          navigate('/login');
+        }
+      }, [props.model, navigate]);
     
     function gameFunction(dogPromiseState){
         
