@@ -1,5 +1,7 @@
 import { useState } from "react";
 import Select from "react-select";
+import Popup from "reactjs-popup";
+import "/src/popup.css";
 
 
 function GameView(props){
@@ -40,12 +42,23 @@ function GameView(props){
             {//Button to start, don't know if i should do
              //a callback function here or not
             }
+            
             <div className = "minilogoDiv">
-                <button onClick = {homepageACB}
-                        className = "minilogoButton">
-                    <img src = "https://svgshare.com/i/10ZE.svg"
-                        height = {60}/>
-                </button>
+                <Popup trigger={
+                    <button className = "minilogoButton">
+                        <img src = "https://svgshare.com/i/10ZE.svg"
+                            height = {60}/>
+                    </button>} position="bottom left" modal>
+                    {close => (
+                    <div className="modal">
+                        <h2>Are you sure you want to quit?</h2>
+                        <div>
+                            <button className="modal-buttons" onClick = {homepageACB}>Yes</button>
+                            <button className="modal-buttons" onClick={close}>No</button>
+                        </div>
+                    </div>
+                    )}
+                </Popup>
             </div>
 
             <div className = "game">

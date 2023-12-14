@@ -1,10 +1,7 @@
 import "/src/App.css"
+import {slide as Menu} from "react-burger-menu"
 
 function StartView(props){
-
-    function leaderboardACB(){
-        window.location.hash = "#/leaderboard"
-    }
 
     //temporary
     function startGameACB(){
@@ -12,17 +9,31 @@ function StartView(props){
         window.location.hash = "#/game"
     }
 
+
     return(
         <div>
             {//Button to Leaderboard, might have to change prop
             }
-            <div className = "leaderboardDiv">
-                <button onClick={leaderboardACB}
-                        className = "leaderboardButton">
-                    <img src = "https://svgshare.com/i/10ZW.svg"
-                         height = {35}/>
-                </button>
-            </div>
+                <Menu className = "dropdownMenu">
+                    <a  id = "Profile" 
+                        className = "menuItem" 
+                        href = "#/start">
+                        Profile
+                    </a>
+
+                    <a  id = "Leaderboard" 
+                        className = "menuItem" 
+                        href = "#/leaderboard">
+                        Leaderboard
+                    </a>
+
+                    <a  id = "Logout" 
+                        className = "menuItem" 
+                        href = "#/login">
+                        Log out
+                    </a>
+
+                </Menu>
 
             {// Logo image, must decide where we want to store it
             }
