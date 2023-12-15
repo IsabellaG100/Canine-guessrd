@@ -29,7 +29,7 @@ class FirebaseModel {
     // Initializes a listener for Firebase authentication state changes. 
     initAuthStateSync() {
         onAuthStateChanged(this.auth, (user) => {
-            console.log("(In initAuthStateSync) Auth state changed, user:", user);
+            //console.log("(In initAuthStateSync) Auth state changed, user:", user);
             this.setAuthUser(user);
         });
     }
@@ -41,7 +41,7 @@ class FirebaseModel {
 
     // Method to check if a user is authenticated
     isAuthenticated() {
-        console.log("(In isAuthenticated): ", this.authUser);
+        //console.log("(In isAuthenticated): ", this.authUser);
         return this.authUser != null;
     }
 
@@ -94,7 +94,7 @@ class FirebaseModel {
             const provider = new GoogleAuthProvider();
             const result = await signInWithPopup(auth, provider);  // Perform the sign-in with Google
             this.setAuthUser(result.user);  // Update the authenticated user
-            console.log("(In firebaseModel) User logged in with Google:", this.authUser);
+            //console.log("(In firebaseModel) User logged in with Google:", this.authUser);
     
             const userRef = ref(this.database, `users/${this.authUser.uid}`);
             const userSnapshot = await get(userRef);
