@@ -3,26 +3,21 @@ import resolvePromise from "../resolvePromise.js";
 import { shuffleArray, filterDuplicateValues, generateRandomArrayOfIndex } from "../utilities.js";
 
 
-
 export default {
 
     leaderboard: {},
     showGame: false,
     gameStarted: false,
+    HighScore: null,
     score: 0,
     dogBreedPromiseState: {},
-    useableDogData:[],
     RandomDogIndexArray:[],
     choosenDogs: null,
     choosenDogBreeds: null,
     choosenDogOrigin: null,
     guessedDogs: [],
     guessedDogOrigin: [],
-    arrayIndex: [101,77,84,6,341],    
-   
-    /*
-    Vi måste reset allt om spelare vill göra igen
-    */
+
     startGame(){
         this.score = 0;
         this.guessedDogBreeds = []
@@ -31,34 +26,20 @@ export default {
         this.getChoosenDogs()
         this.setChoosenDogBreeds()
         this.setChoosenDogOrigin()
-        console.log("the first choosen dogname inside startGame",this.choosenDogs[0])
-        console.log("Inside and done with startGame")
+        console.log("Done with startGame")
         this.showGame = true;
 
     },
-
     
     setGussedDogs(obj){
-        this.guessedDogs = [...this.guessedDogs, {breedName: obj[0],
-                                                  origin: obj[1]}]
+        this.guessedDogs = [...this.guessedDogs, {breedName: obj[0], origin: obj[1]}]
         
-        console.log("this.choosenDogs", this.choosenDogs)
-
     },
-    /*
-    Adds every guessed dog to an array with dog objects with only two attributes, id and Origin
-    */
-    setGuseedDogOrigin(obj){
-        this.guessedDogOrigin = [...this.guessedDogOrigin, obj ]
-
-    },
-
 
     calculateScore(){
         if(this.guessedDogs !== null){ // have the user guessed?
-               const comparing_array = this.choosenDogs//.slice(0,this.guessedDogs.length) // split the choosen dogs variable where the last dog in game was 
-               console.log("After spreading choosen dogs", comparing_array) 
-               /*comparing_array.forEach((value, index)=>{
+               const comparing_array = [...this.choosenDogs].slice(0,this.guessedDogs.length) // split the choosen dogs variable where the last dog in game was 
+               comparing_array.forEach((value, index)=>{
                     if(value.origin === this.guessedDogs[index].origin){
                         this.score += 1; 
                     }
@@ -66,10 +47,9 @@ export default {
                         this.score +=1; 
                     }
                 })
-            
-                console.log(this.score)*/
+                console.log("You recived the score:",this.score)
         }else{
-            throw new Error ("either origin or breed has not been guessed")}
+            console.log("The user has not guessed yet")}
     },
 
     /*
@@ -95,7 +75,6 @@ export default {
     value: dog id (int)
     label: dog Origin (string)    */
     setChoosenDogOrigin(){
-
         function createObjWithOriginIdCB(dict_obj){
             return  ({"value": dict_obj.origin, 
                       "label": dict_obj.origin});
@@ -115,23 +94,11 @@ export default {
     choosenDogs is an array with dictionary objects of the dogs (dogbreed, origin, img) that is going to be used in the game turn
     */
     getChoosenDogs(){
-   
             this.choosenDogs = this.RandomDogIndexArray.map(index => this.dogBreedPromiseState.data[index])
             console.log("this.choosenDogs",this.choosenDogs)
             return this.choosenDogs
     },
    
-    /*
-    A function that generate an array of 100 random ints that
-    will choose 100 (check the number after length:) random dogbreeds from the data from the API
-     
-    generateRandomArrayOfIndex(){
-        this.RandomArrayDogIndex = Array.from({length:100}, ()=> {
-            return Math.floor(Math.random()*317)
-        });
-    },
-
-    */
     setRandomDogIndexArray(){
         this.RandomDogIndexArray = generateRandomArrayOfIndex()
     },
@@ -143,21 +110,7 @@ export default {
     getDataFromAPI() {
         if (this.dogBreedPromiseState?.data === undefined){
             resolvePromise(getDogBreed(), this.dogBreedPromiseState)
-        }
-            
+        }    
       },
-
-    setText(ex_string){
-        if (ex_string===undefined){
-            console.log("its undefined", ex_string)
-            console.log("promise state is:", this.dogBreedPromiseState.data.breedName)
-            this.text = this.dogBreedPromiseState.data.breedName
-        }
-        else{
-            console.log("it worked")
-            console.log("promise state is:", this.dogBreedPromiseState.data)
-            this.text = ex_string;}
-
-    }
 
 }
