@@ -1,4 +1,4 @@
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, GoogleAuthProvider, signOut, onAuthStateChanged } from 'firebase/auth';
 import { getDatabase, ref, set, onValue, update, get } from 'firebase/database';
 import { app } from '../firebaseConfig'; // Make sure this path is correct for your project setup
 import { makeAutoObservable } from 'mobx';
@@ -10,17 +10,39 @@ class FirebaseModel {
     constructor() {
         makeAutoObservable(this); // This makes all properties and methods of the class reactive in MobX
         this.auth = getAuth(app); // Initialize Firebase Auth
-        this.database = getDatabase(app); // Initialize Firebase Database
-        this.loginWithGoogle = this.loginWithGoogle.bind(this); // Bind methods to ensure 'this' refers to the FirebaseModel instance
-        this.logout = this.logout.bind(this);
-        this.login = this.login.bind(this);
-        this.register = this.register.bind(this);
-        this.setAuthUser = this.setAuthUser.bind(this); // Is this necessary?
+        this.database = getDatabase(app); // Initialize Firebase Database       
+        this.bindMethods(); // Bind methods
+        this.initAuthStateSync(); // Initialize auth state synchronization
+    }
+
+    bindMethods() {
+        // Bind all methods that need 'this' context
+        const methodsToBind = [
+            'initAuthStateSync', 'loginWithGoogle', 'logout', 'login', 'register', 'setAuthUser',
+            'setOrUpdateLeaderboardData', 'getLeaderboardData', 'isAuthenticated'
+        ];
+        methodsToBind.forEach(method => {
+            this[method] = this[method].bind(this);
+        });
+    }
+
+    // Initializes a listener for Firebase authentication state changes. 
+    initAuthStateSync() {
+        onAuthStateChanged(this.auth, (user) => {
+            //console.log("(In initAuthStateSync) Auth state changed, user:", user);
+            this.setAuthUser(user);
+        });
     }
 
     // Method to set the authenticated user. This is used after successful authentication
     setAuthUser(user) {
         this.authUser = user;
+    }
+
+    // Method to check if a user is authenticated
+    isAuthenticated() {
+        //console.log("(In isAuthenticated): ", this.authUser);
+        return this.authUser != null;
     }
 
     // Async method to register a new user with email, password, and username
@@ -35,7 +57,7 @@ class FirebaseModel {
     
             const userCredential = await createUserWithEmailAndPassword(this.auth, email, password);
             this.setAuthUser(userCredential.user);
-    
+            
             // Store username in a separate node for easy lookup
             await set(ref(this.database, `usernames/${username}`), true);
     
@@ -72,6 +94,7 @@ class FirebaseModel {
             const provider = new GoogleAuthProvider();
             const result = await signInWithPopup(auth, provider);  // Perform the sign-in with Google
             this.setAuthUser(result.user);  // Update the authenticated user
+            //console.log("(In firebaseModel) User logged in with Google:", this.authUser);
     
             const userRef = ref(this.database, `users/${this.authUser.uid}`);
             const userSnapshot = await get(userRef);

@@ -3,9 +3,10 @@
     background:#D9D9D9;
     color: #052409;
     width:50%;
-    padding:5px;
-    border:1px solid #d7d7d7;
-    border-radius: 10px;
+    padding:10px;
+    border:1px solid #bcda12;
+    box-shadow: 2px 2px 20px rgba(0,0,0,.16);
+    border-radius: 8px;
 }
 
 [role=tooltip].popup-content{
