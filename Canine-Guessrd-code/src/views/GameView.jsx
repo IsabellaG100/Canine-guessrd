@@ -47,7 +47,7 @@ function GameView(props){
                 <Popup trigger={
                     <button className = "minilogoButton">
                         <img src = "https://svgshare.com/i/10ZE.svg"
-                            height = {60}/>
+                            className="minilogoImage"/>
                     </button>} position="bottom left" modal>
                     {close => (
                     <div className="modal">

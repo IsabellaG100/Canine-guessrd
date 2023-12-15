@@ -10,9 +10,11 @@
   top: 20px;
   left: 25px;
 }
+
 .leaderboardButton {
   padding: 8px 2px 3px 2px;
 }
+
 /*
 .dropdownMenu{
   padding: 10px;
@@ -35,15 +37,37 @@
   top: 5px;
   right: 15px;
 }
+
 .minilogoButton{
   background-color: transparent;
+  border: transparent;
 }
+
+.minilogoButton:hover {
+  border: transparent;
+}
+.minilogoButton:focus,
+.minilogoButton:focus-visible {
+  outline: transparent;
+}
+
+.minilogoImage{
+  height: 60px;
+  transition: height .2s;
+}
+.minilogoImage:hover {
+  height: 80px;
+  transition: height .2s;
+}
+
 
 .game{
   display: flex;
   flex-flow: row;
   background-color: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
   padding: 50px;
+  margin: 50px;
   border-radius: 10px;
 }
 

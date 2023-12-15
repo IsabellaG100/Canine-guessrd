@@ -29,7 +29,7 @@ function RegisterView(props) {
                 <button onClick = {homepageACB}
                         className = "minilogoButton">
                     <img src = "https://svgshare.com/i/10ZE.svg"
-                        height = {60}/>
+                         className="minilogoImage"/>
                 </button>
             </div>
             <h1>Register</h1>
@@ -54,8 +54,7 @@ function RegisterView(props) {
             <button className='registerbuttons' onClick={() => props.onRegister(email, password, username)}>Register</button>
             <button className='registerbuttons' onClick={props.onRegisterWithGoogle}>Register with Google</button>
             <p>
-                Already have an account? 
-                <button onClick={props.onNavigateLogin}>Login</button>
+                Already have an account?
                 <button onClick={props.onBackToLogin}>Back to Login</button>
             </p>
         </div>
