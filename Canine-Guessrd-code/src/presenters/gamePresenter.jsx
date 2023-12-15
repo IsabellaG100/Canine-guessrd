@@ -5,6 +5,10 @@ import React, { useEffect } from 'react';
 import timerStore from "../TimerFile";
 
 export default observer( function Game(props){
+
+    function sendGuesstoModelACB(guess){
+        props.model.quiz.setGussedDogs(guess);
+    }
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -33,8 +37,8 @@ export default observer( function Game(props){
     
     function gameFunction(dogPromiseState){
         
-        console.log("promisestate in game:", dogPromiseState)
-        console.log("data in game:", dogPromiseState.data)
+        //console.log("promisestate in game:", dogPromiseState)
+        //console.log("data in game:", dogPromiseState.data)
 
 
         if (dogPromiseState?.promise){
@@ -46,6 +50,7 @@ export default observer( function Game(props){
                 return (<GameView dogArray = {props.model.quiz.choosenDogs} 
                                     breeds = {props.model.quiz.choosenDogBreeds} 
                                     origins = {props.model.quiz.choosenDogOrigin}
+                                    saveGuess = {sendGuesstoModelACB}
                                     timer = {timerStore.timer}/>);
         
             } else if (dogPromiseState.error){

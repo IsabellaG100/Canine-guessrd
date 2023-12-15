@@ -18,6 +18,7 @@ function GameView(props){
         setSelectedOptionsBreed("Select Breed")
         setSelectedOptionsOrigin("Select Origin")
         console.log(playerguesses)
+        props.saveGuess(playerguesses)
         // temporary:
         //window.location.hash = "#/results"
 

@@ -13,15 +13,13 @@ export default {
     dogBreedPromiseState: {},
     RandomDogIndexArray:[],
     choosenDogs: null,
-    choosenDogBreeds: null,
-    choosenDogOrigin: null,
+    choosenDogBreeds: null, // these are the options the user can choose between
+    choosenDogOrigin: null, // these are the options the user can choose between
     guessedDogs: [],
-    guessedDogOrigin: [],
 
     startGame(){
         this.score = 0;
-        this.guessedDogBreeds = []
-        this.guessedDogOrigin = []
+        this.guessedDogs = [];
         this.setRandomDogIndexArray()
         this.getChoosenDogs()
         this.setChoosenDogBreeds()
@@ -32,8 +30,7 @@ export default {
     },
     
     setGussedDogs(obj){
-        this.guessedDogs = [...this.guessedDogs, {breedName: obj[0], origin: obj[1]}]
-        
+        this.guessedDogs = [...this.guessedDogs, {breedName: obj[0], origin: obj[1]}]        
     },
 
     calculateScore(){
