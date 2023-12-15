@@ -52,6 +52,7 @@ function GameView(props){
                     {close => (
                     <div className="modal">
                         <h2>Are you sure you want to quit?</h2>
+                        <p>If you leave, all your progress will be lost</p>
                         <div>
                             <button className="modal-buttons" onClick = {homepageACB}>Yes</button>
                             <button className="modal-buttons" onClick={close}>No</button>
