@@ -17,9 +17,8 @@ export default function Start(props){
         props.model.quiz.getDataFromAPI()
         console.log("This is the index array", props.model.quiz.RandomArrayDogIndex)
         console.log("promisestate at start", props.model.quiz.dogBreedPromiseState)
-        props.model.quiz.generateRandomArrayOfIndex()
-        console.log(props.model.quiz.RandomArrayDogIndex)
-        
+        //props.model.quiz.generateRandomArrayOfIndex()
+        //console.log(props.model.quiz.RandomArrayDogIndex)
     }
 
     function handleLogout() {
