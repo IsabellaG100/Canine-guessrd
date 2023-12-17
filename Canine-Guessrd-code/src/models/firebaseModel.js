@@ -175,6 +175,21 @@ class FirebaseModel {
             }
         });
     }
+
+    // Method to fetch user data from the database
+    getUserData(userId, callback) {
+        const userRef = ref(this.database, `users/${userId}`);
+        get(userRef).then((snapshot) => {
+            if (snapshot.exists()) {
+                callback(snapshot.val());
+            } else {
+                callback(null); // Handle case where user data is not found
+            }
+        }).catch((error) => {
+            console.error('Error fetching user data:', error);
+            callback(null);
+        });
+    }
 }
 
 // Creating and exporting an instance of the FirebaseModel class
