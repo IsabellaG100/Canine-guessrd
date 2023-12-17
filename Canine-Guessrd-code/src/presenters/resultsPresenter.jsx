@@ -31,7 +31,6 @@ export default function Results(props){
     
     return (<ResultsView 
               score = {props.model.quiz.score} 
-              length = {props.model.quiz.guessedDogs.length}
               guessedDogs = {props.model.quiz.guessedDogs}
               correctDogs = {props.model.quiz.choosenDogs}/>);
 }

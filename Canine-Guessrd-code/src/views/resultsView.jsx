@@ -1,6 +1,5 @@
+import { useState } from "react"
 export default function ResultsView(props){
-    
-    const slide_i = 0
 
     function leaderboardACB(){
         window.location.hash = "#/leaderboard"
@@ -14,16 +13,15 @@ export default function ResultsView(props){
         window.location.hash = "#/game"
     }
 
-    function previousACB(){
-        /*slide_i -= 1*/
+    function changeSlideACB(index){
+        setIndex(index)
     }
 
-    function nextACB(){
-        /*slide_i += 1*/
-    }
+    const [index, setIndex] = useState(0);
 
     return (
         <div>
+
             <div className = "leaderboardDiv">
                 <button onClick = {leaderboardACB}
                         className = "leaderboardButton">
@@ -39,17 +37,18 @@ export default function ResultsView(props){
                 </button>
             </div>
 
-            <h1>Score: {/*props.placeholder.score*/} </h1>
+            <h1>Score: {props.score} </h1>
 
             <div className = "results">
-                <button onClick = {previousACB}
-                        disabled = {slide_i === 0}
+                <button onClick = {() => changeSlideACB(index - 1)}
+                        disabled = {index === 0}
                         className = "resultsNavL">
                     <img src = "https://svgshare.com/i/10Zg.svg"
                          height = {20}/>
                 </button>
 
-                <img src = "#"
+                <img src = {props.correctDogs[index].imgThumb}
+                     height = {200}
                      className = "dogImage"/>
                 
                 <span>
@@ -64,25 +63,25 @@ export default function ResultsView(props){
                 <span className = "answers">
                     <span>
                         <p>
-                            {/*props.placeholder.breedGuess[slide_i]*/} player answer1
+                            {props.guessedDogs[index].breedName} 
                         </p>
                         <p>
-                            {/*props.placeholder.correctBreed[slide_i]*/} correct answer1
+                            {props.correctDogs[index].breedName}
                         </p>
                     </span>
 
                     <span>
-                        <p>
-                            {/*props.placeholder.originGuess[slide_i]*/} player answer2
+                    <p>
+                            {props.guessedDogs[index].origin} 
                         </p>
                         <p>
-                            {/*props.placeholder.correctOrigin[slide_i]*/} correct answer2
+                            {props.correctDogs[index].origin}
                         </p>
                     </span>
                 </span>
 
-                <button onClick = {nextACB}
-                        disabled = {slide_i === props.length}
+                <button onClick = {() => changeSlideACB(index + 1)}
+                        disabled = {index === props.guessedDogs.length - 1}
                         className = "resultsNavR">
                     <img src = "https://svgshare.com/i/10Yw.svg"
                          height = {20}/>

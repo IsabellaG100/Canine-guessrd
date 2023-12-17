@@ -14,7 +14,8 @@ function StartView(props){
         <div>
             {//Button to Leaderboard, might have to change prop
             }
-                <Menu className = "dropdownMenu">
+            <div className = "dropdownMenu">
+                <Menu >
                     <a  id = "Profile" 
                         className = "menuItem" 
                         href = "#/start">
@@ -34,6 +35,7 @@ function StartView(props){
                     </a>
 
                 </Menu>
+            </div>
 
             {// Logo image, must decide where we want to store it
             }
@@ -43,8 +45,7 @@ function StartView(props){
             <div>
                 
                 {/*temporary*/}
-                <button onClick={startGameACB}>Start</button>
-                <button onClick={props.logout}>Log out</button>
+                <button onClick={startGameACB}>Start Game</button>
             </div>
         </div>
     );
