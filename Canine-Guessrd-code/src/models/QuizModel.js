@@ -1,6 +1,6 @@
 import {getDogBreed} from "../dogBreedSource.js"
 import resolvePromise from "../resolvePromise.js";
-import { shuffleArray, filterDuplicateValues, generateRandomArrayOfIndex } from "../utilities.js";
+import { sortAlpabeticByAttribute, filterDuplicateValues, generateRandomArrayOfIndex } from "../utilities.js";
 
 
 export default {
@@ -61,7 +61,7 @@ export default {
                 return ({"value": dict_obj.breedName,
                         "label": dict_obj.breedName}); 
             });
-            shuffleArray(this.choosenDogBreeds)
+            this.choosenDogBreeds = sortAlpabeticByAttribute(this.choosenDogBreeds, "label") // sorts the options in alphabetical order
         }else{
             console.log("this.choosen dogs is unfilled")
         }
@@ -71,15 +71,13 @@ export default {
     sets this.choosenDogOrigin which is an array of dog objects with only 2 attributes, 
     value: dog id (int)
     label: dog Origin (string)    */
-    setChoosenDogOrigin(){
-        function createObjWithOriginIdCB(dict_obj){
-            return  ({"value": dict_obj.origin, 
-                      "label": dict_obj.origin});
-        }    
-        
+    setChoosenDogOrigin(){ 
         if(this.choosenDogs !== null){
-            this.choosenDogOrigin= filterDuplicateValues(this.choosenDogs, 'origin').map(createObjWithOriginIdCB)
-            shuffleArray(this.choosenDogOrigin)
+            this.choosenDogOrigin= filterDuplicateValues(this.choosenDogs, 'origin').map(function(dict_obj){
+                return({"value" : dict_obj.origin,
+                        "label": dict_obj.origin})
+            })
+            this.choosenDogOrigin = sortAlpabeticByAttribute(this.choosenDogOrigin, "label") // sorts the options in alphabetical order
         }else{
             console.log("this.choosen dogs is unfilled")
         }
