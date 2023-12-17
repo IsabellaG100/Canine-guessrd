@@ -61,7 +61,6 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-
 .bm-burger-button {
   position: fixed;
   width: 26px;
@@ -74,22 +73,17 @@ button:focus-visible {
 }
 
 .bm-menu-wrap {
-  top: 60px;
   height: 100%;
-
 }
 .bm-menu {
-  background: transparent;
-  
+  background: #C7CC6B; 
 }
 .bm-item-list {
-  padding: 20px;
+  padding: 25px;
 }
 .bm-item {
   display: inline-block;
-  
 }
 .bm-overlay {
-  background-color: transparent;
-  
+  background: transparent;
 }

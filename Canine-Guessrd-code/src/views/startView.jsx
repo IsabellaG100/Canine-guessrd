@@ -45,8 +45,7 @@ function StartView(props){
             <div>
                 
                 {/*temporary*/}
-                <button onClick={startGameACB}>Start</button>
-                <button onClick={props.logout}>Log out</button>
+                <button onClick={startGameACB}>Start Game</button>
             </div>
         </div>
     );
