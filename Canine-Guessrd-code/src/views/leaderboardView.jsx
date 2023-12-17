@@ -28,11 +28,19 @@ export default function LeaderboardView(props){
             </div>
 
             <h1>Leaderboard</h1>
-            <table>
-                <tbody>
-                    {props.leaderboardData.map(playersTableRowCB)}
-                </tbody>
-            </table>
+            <div className="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Highscore</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {props.leaderboardData.map(playersTableRowCB)}
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     )
