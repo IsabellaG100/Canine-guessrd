@@ -19,7 +19,7 @@ class FirebaseModel {
         // Bind all methods that need 'this' context
         const methodsToBind = [
             'initAuthStateSync', 'loginWithGoogle', 'logout', 'login', 'register', 'setAuthUser',
-            'setOrUpdateLeaderboardData', 'getLeaderboardData', 'isAuthenticated'
+            'setLeaderboardData', 'getLeaderboardData', 'isAuthenticated', 'checkAndUpdateHighscore'
         ];
         methodsToBind.forEach(method => {
             this[method] = this[method].bind(this);
@@ -127,7 +127,7 @@ class FirebaseModel {
     }
 
     // Async method to set or update the leaderboard data for a specific user
-    async setOrUpdateLeaderboardData(userId, username, highscore) {
+    async setLeaderboardData(userId, username, highscore) {
         try {
             await update(ref(this.database, `leaderboard/${userId}`), {
                 username,
@@ -135,6 +135,29 @@ class FirebaseModel {
             });
         } catch (error) {
             console.error('Error updating leaderboard:', error);
+            throw error;
+        }
+    }
+
+    async checkAndUpdateHighscore(userId, username, score) {
+        try {
+            const userRef = ref(this.database, `users/${userId}`);
+            const userSnapshot = await get(userRef);
+
+            if (userSnapshot.exists()) {
+                const userData = userSnapshot.val();
+                if (score > userData.highscore) {
+                    // Update the highscore
+                    await set(ref(this.database, `users/${userId}`), {
+                        ...userData,
+                        highscore: score
+                    });
+                    // Update the leaderboard as well
+                    await this.setLeaderboardData(userId, username, score);
+                }
+            }
+        } catch (error) {
+            console.error('Error checking/updating highscore:', error);
             throw error;
         }
     }
