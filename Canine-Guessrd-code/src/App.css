@@ -15,18 +15,19 @@
   padding: 8px 2px 3px 2px;
 }
 
-/*
+
 .dropdownMenu{
-  padding: 10px;
-  width: 10px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
 .menuItem{
-  background-color: #006e37;
   padding: 10px;
   text-align: left;
+  
 }
-*/
+
 
 .backButton {
   padding: 10px 19px 6px 16px;
