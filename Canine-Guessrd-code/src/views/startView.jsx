@@ -12,8 +12,6 @@ function StartView(props){
 
     return(
         <div>
-            {//Button to Leaderboard, might have to change prop
-            }
             <div className = "dropdownMenu">
                 <Menu >
                     <a  id = "Profile" 
@@ -37,15 +35,21 @@ function StartView(props){
                 </Menu>
             </div>
 
-            {// Logo image, must decide where we want to store it
-            }
             <img src = "https://svgshare.com/i/10ZE.svg"
                  height = {400}/>
-
+            <div className="start">
+                <h3>Guess as many dogs as you can in 60 seconds</h3>
+            </div>
             <div>
-                
-                {/*temporary*/}
-                <button onClick={startGameACB}>Start Game</button>
+                <button className="startbutton"
+                        onClick={startGameACB}>
+                        Start Game
+                </button>
+                <p  className="info"
+                    onClick={startGameACB}>
+                    First time playing?
+                    <img width="30" height="30" src="https://img.icons8.com/dotty/80/info.png" alt="info"/>
+                </p>
             </div>
         </div>
     );

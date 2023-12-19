@@ -5,7 +5,6 @@ import "/src/popup.css";
 
 
 function GameView(props){
-    // Lägg till object för att spara player guesses
 
     function homepageACB(){
         window.location.hash = "#/start"
@@ -19,8 +18,6 @@ function GameView(props){
         setSelectedOptionsOrigin("Select Origin")
         console.log(playerguesses)
         props.saveGuess(playerguesses)
-        // temporary:
-        //window.location.hash = "#/results"
 
     };
 
@@ -40,10 +37,6 @@ function GameView(props){
 
     return(
         <div>
-            {//Button to start, don't know if i should do
-             //a callback function here or not
-            }
-            
             <div className = "minilogoDiv">
                 <Popup trigger={
                     <button className = "minilogoButton">
@@ -62,17 +55,18 @@ function GameView(props){
                     )}
                 </Popup>
             </div>
-
+            <h1>
+                Make your guess
+            </h1>
+            
             <div className = "game">
-                {// Image of dog, have to decide propname/path
-                }
                 <div className = "dogImage">
                     <img src = {props.dogArray[index].imgThumb}
                          height = {200}/>
+                    <div className="timer">
+                        {props.timer}
+                    </div>
                 </div>
-                
-                {//Change span to something else?
-                }
                 <div>
                     <h2>Breed:</h2>
                     <div>
@@ -97,10 +91,6 @@ function GameView(props){
                     </div>
                 </div>
             </div>
-
-            {//Need to figure out how to do the timer
-            }
-            <span>TIMER{props.timer}</span>
             <button onClick={() => guessCB(index + 1)}>Guess</button>
         </div>
     );
