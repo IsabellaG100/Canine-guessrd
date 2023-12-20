@@ -24,12 +24,21 @@ export default {
         this.getChoosenDogs()
         this.setChoosenDogBreeds()
         this.setChoosenDogOrigin()
+        this.guessedDogs=[
+            {breedName: "---",
+             origin: "---"}]
         this.showGame = true;
 
     },
     
     setGussedDogs(obj){
+        if(this.guessedDogs.length ===1){
+        this.guessedDogs[0].breedName = obj[0]
+        this.guessedDogs[0].origin = obj[1]
+        }
         this.guessedDogs = [...this.guessedDogs, {breedName: obj[0], origin: obj[1]}]        
+        
+
     },
 
     calculateScore(){
