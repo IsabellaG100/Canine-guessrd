@@ -206,6 +206,7 @@ table tr:nth-child(even) {
 
 .incorrect{
   text-decoration: line-through;
+  color: rgb(206, 43, 43);
 }
 
 .loginform{

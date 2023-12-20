@@ -5,6 +5,7 @@ import React, { useEffect, useState } from 'react';
 export default function Results(props){
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
+    const [index, setIndex] = useState(0);
 
     useEffect(() => {
         if (!props.model.firebase.isAuthenticated()) {
@@ -37,5 +38,7 @@ export default function Results(props){
               score = {props.model.quiz.score} 
               guessedDogs = {props.model.quiz.guessedDogs}
               correctDogs = {props.model.quiz.choosenDogs}
-              playAgain = {playAgainACBHandler}/>);
+              playAgain = {playAgainACBHandler}
+              index = {index}
+              setIndex = {setIndex}/>);
 }
