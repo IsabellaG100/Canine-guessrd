@@ -12,6 +12,7 @@ export default function ResultsView(props){
     }
 
     function startGameACB(){
+        props.playAgain()
         window.location.hash = "#/game"
     }
 
