@@ -28,9 +28,14 @@ export default function Results(props){
         props.model.firebase.checkAndUpdateHighscore(userId, username, score);
     }
 
+    function playAgainACBHandler(){
+        props.model.quiz.startGame()
+    }
+
     
     return (<ResultsView 
               score = {props.model.quiz.score} 
               guessedDogs = {props.model.quiz.guessedDogs}
-              correctDogs = {props.model.quiz.choosenDogs}/>);
+              correctDogs = {props.model.quiz.choosenDogs}
+              playAgain = {playAgainACBHandler}/>);
 }

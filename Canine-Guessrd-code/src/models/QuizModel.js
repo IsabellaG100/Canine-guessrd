@@ -24,7 +24,6 @@ export default {
         this.getChoosenDogs()
         this.setChoosenDogBreeds()
         this.setChoosenDogOrigin()
-        console.log("Done with startGame")
         this.showGame = true;
 
     },
