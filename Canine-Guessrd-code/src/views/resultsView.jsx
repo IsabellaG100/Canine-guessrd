@@ -3,10 +3,6 @@ import {slide as Menu} from "react-burger-menu"
 
 export default function ResultsView(props){
 
-    function leaderboardACB(){
-        window.location.hash = "#/leaderboard"
-    }
-
     function homepageACB(){
         window.location.hash = "#/start"
     }
@@ -68,34 +64,21 @@ export default function ResultsView(props){
                 <img src = {props.correctDogs[index].imgThumb}
                      height = {200}
                      className = "dogImage"/>
-                
-                <span className = "breedAnswers">
+            <div>    
+                <span className = "resultsText">
                     <p className = "answersTitle">
                         Breed:
                     </p>
-                    <span  className = "answers">
-                        <p>
-                            {props.guessedDogs[index].breedName} 
-                        </p>
-                        <p>
-                            {props.correctDogs[index].breedName}
-                        </p>
-                    </span>
+                    {displayAnswer(props.guessedDogs[index].breedName, props.correctDogs[index].breedName)}
                 </span>
 
-                <span className = "originAnswers">
+                <span className = "resultsText">
                     <p className = "answersTitle">
                         Origin: 
                     </p>
-                    <span  className = "answers">
-                    <p>
-                            {props.guessedDogs[index].origin} 
-                        </p>
-                        <p>
-                            {props.correctDogs[index].origin}
-                        </p>
-                    </span>
+                    {displayAnswer(props.guessedDogs[index].origin, props.correctDogs[index].origin)}
                 </span>
+            </div>
 
                 <button onClick = {() => changeSlideACB(index + 1)}
                         disabled = {index === props.guessedDogs.length - 1}
@@ -116,4 +99,28 @@ export default function ResultsView(props){
 
         </div>
     )
+
+    function displayAnswer(guess, answer){
+        if(guess === answer){
+            return (
+                <span  className = "answers">
+                        <p>
+                            {guess} 
+                        </p>
+                </span>
+            )
+        } else {
+            return (
+                <span  className = "answers">
+                        <p className = "incorrect">
+                            {guess} 
+                        </p>
+                        <p>
+                            {answer}
+                        </p>
+                </span>
+            )
+        }
+    }
+
 }

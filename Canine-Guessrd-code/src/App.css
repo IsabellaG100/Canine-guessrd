@@ -187,8 +187,9 @@ table tr:nth-child(even) {
   padding: 10px 11px 6px 12px;
 }
 
-.breedAnswers .originAnswers{
-  flex-direction: row;
+.resultsText{
+  display: flex;
+  flex-flow: row;
 }
 
 .answersTitle{
@@ -201,6 +202,10 @@ table tr:nth-child(even) {
 .answers{
   margin-right: 5px;
   text-align: left;
+}
+
+.incorrect{
+  text-decoration: line-through;
 }
 
 .loginform{
