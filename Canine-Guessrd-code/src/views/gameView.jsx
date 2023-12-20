@@ -6,12 +6,8 @@ import "/src/popup.css";
 
 function GameView(props){
 
-    function resumeTimerACB(){
-        props.resumeTimer()
-    }
-
     function homepageACB(){
-       window.location.hash = "#/start"
+        window.location.hash = "#/start"
     }
 
     function guessCB(index){
@@ -24,9 +20,6 @@ function GameView(props){
         props.saveGuess(playerguesses)
 
     };
-    function pauseTimerACB(){
-        props.pauseTimer()
-    }
 
     function handleSelectBreed(breed) {
         // Göra funktionen nedan till en prop?
@@ -45,12 +38,12 @@ function GameView(props){
     return(
         <div>
             <div className = "minilogoDiv">
-                <Popup onOpen={pauseTimerACB} trigger={
+                <Popup trigger={
                     <button className = "minilogoButton">
                         <img src = "https://svgshare.com/i/10ZE.svg"
                             className="minilogoImage"/>
                     </button>} position="bottom left" modal>
-                    {close =>  (
+                    {close => (
                     <div className="modal">
                         <h2>Are you sure you want to quit?</h2>
                         <p>If you leave, all your progress will be lost</p>
@@ -99,7 +92,6 @@ function GameView(props){
                 </div>
             </div>
             <button onClick={() => guessCB(index + 1)}>Guess</button>
-            <button onClick={pauseTimerACB}>pause</button>
         </div>
     );
 }
