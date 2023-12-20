@@ -5,7 +5,15 @@ import React, { useEffect } from 'react';
 import timerStore from "../TimerFile";
 
 export default observer( function Game(props){
-
+    
+    function resumeTimerACBHandler(){
+        timerStore.startTimer()
+    }
+    
+    function pauseTimerACBHandler(){
+        timerStore.stopTimer()
+    }
+    
     function sendGuesstoModelACB(guess){
         props.model.quiz.setGussedDogs(guess);
     }
@@ -51,7 +59,9 @@ export default observer( function Game(props){
                                     breeds = {props.model.quiz.choosenDogBreeds} 
                                     origins = {props.model.quiz.choosenDogOrigin}
                                     saveGuess = {sendGuesstoModelACB}
-                                    timer = {timerStore.timer}/>);
+                                    timer = {timerStore.timer}
+                                    pauseTimer={pauseTimerACBHandler}
+                                    resumeTimer={resumeTimerACBHandler}/>);
         
             } else if (dogPromiseState.error){
                 return (dogPromiseState.error)
