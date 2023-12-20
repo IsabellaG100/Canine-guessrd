@@ -1,4 +1,6 @@
 import { useState } from "react"
+import {slide as Menu} from "react-burger-menu"
+
 export default function ResultsView(props){
 
     function leaderboardACB(){
@@ -21,14 +23,29 @@ export default function ResultsView(props){
 
     return (
         <div>
+            <div className = "dropdownMenu">
+                <Menu >
+                    <a  id = "Profile" 
+                        className = "menuItem" 
+                        href = "#/start">
+                        Profile
+                    </a>
 
-            <div className = "leaderboardDiv">
-                <button onClick = {leaderboardACB}
-                        className = "leaderboardButton">
-                    <img src = "https://svgshare.com/i/10ZW.svg"
-                         height = {35}/>
-                </button>
+                    <a  id = "Leaderboard" 
+                        className = "menuItem" 
+                        href = "#/leaderboard">
+                        Leaderboard
+                    </a>
+
+                    <a  id = "Logout" 
+                        className = "menuItem" 
+                        href = "#/login">
+                        Log out
+                    </a>
+
+                </Menu>
             </div>
+
             <div className = "minilogoDiv">
                 <button onClick = {homepageACB}
                         className = "minilogoButton">
@@ -51,17 +68,11 @@ export default function ResultsView(props){
                      height = {200}
                      className = "dogImage"/>
                 
-                <span>
+                <span className = "breedAnswers">
                     <p className = "answersTitle">
                         Breed:
                     </p>
-                    <p className = "answersTitle">
-                        Origin: 
-                    </p>
-                </span>
-
-                <span className = "answers">
-                    <span>
+                    <span  className = "answers">
                         <p>
                             {props.guessedDogs[index].breedName} 
                         </p>
@@ -69,8 +80,13 @@ export default function ResultsView(props){
                             {props.correctDogs[index].breedName}
                         </p>
                     </span>
+                </span>
 
-                    <span>
+                <span className = "originAnswers">
+                    <p className = "answersTitle">
+                        Origin: 
+                    </p>
+                    <span  className = "answers">
                     <p>
                             {props.guessedDogs[index].origin} 
                         </p>

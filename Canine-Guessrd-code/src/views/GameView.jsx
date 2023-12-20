@@ -12,7 +12,7 @@ function GameView(props){
 
     function guessCB(index){
         // Lägg till loading screen när den laddar in bilden
-        const playerguesses = [selectedOptionBreed.label, selectedOptionOrigin.label]
+        const playerguesses = [selectedOptionBreed?.label || "---", selectedOptionOrigin?.label || "---"]
         setIndex(index)
         setSelectedOptionsBreed("Select Breed")
         setSelectedOptionsOrigin("Select Origin")
