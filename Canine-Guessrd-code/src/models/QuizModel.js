@@ -7,6 +7,7 @@ export default {
 
     leaderboard: {},
     showGame: false,
+    showResult: false,
     gameStarted: false,
     HighScore: null,
     score: 0,
@@ -24,26 +25,21 @@ export default {
         this.getChoosenDogs()
         this.setChoosenDogBreeds()
         this.setChoosenDogOrigin()
-        this.guessedDogs=[
-            {breedName: "---",
-             origin: "---"}]
         this.showGame = true;
+        this.showResult = false;
 
     },
     
     setGussedDogs(obj){
-        if(this.guessedDogs.length ===1){
-        this.guessedDogs[0].breedName = obj[0]
-        this.guessedDogs[0].origin = obj[1]
-        }
         this.guessedDogs = [...this.guessedDogs, {breedName: obj[0], origin: obj[1]}]        
         
 
     },
 
     calculateScore(){
-        if(this.guessedDogs !== null){ // have the user guessed?
+        if(this.guessedDogs.length !== 0){ // have the user guessed?
                const comparing_array = [...this.choosenDogs].slice(0,this.guessedDogs.length) // split the choosen dogs variable where the last dog in game was 
+               if(!this.showResult){
                comparing_array.forEach((value, index)=>{
                     if(value.origin === this.guessedDogs[index].origin){
                         this.score += 1; 
@@ -52,9 +48,12 @@ export default {
                         this.score +=1; 
                     }
                 })
+                this.showResult = true
+            }
                 console.log("You recived the score:",this.score)
         }else{
-            console.log("The user has not guessed yet")}
+            this.guessedDogs = [{breedName: "---", origin: "---"}]
+        }
     },
 
     /*
