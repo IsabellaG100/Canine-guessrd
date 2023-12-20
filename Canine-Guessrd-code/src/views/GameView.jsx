@@ -38,7 +38,7 @@ function GameView(props){
     return(
         <div>
             <div className = "minilogoDiv">
-                <Popup trigger={
+                <Popup onOpen={props.pauseTimer} onClose={props.resumeTimer} trigger={
                     <button className = "minilogoButton">
                         <img src = "https://svgshare.com/i/10ZE.svg"
                             className="minilogoImage"/>
