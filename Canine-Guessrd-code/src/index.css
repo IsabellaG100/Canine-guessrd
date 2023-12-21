@@ -53,12 +53,16 @@ button {
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
+button:not(:disabled):hover {
   border: 2px solid #C7CC6B;
 }
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+button:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 .bm-burger-button {

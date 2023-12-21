@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import Select from "react-select";
 import Popup from "reactjs-popup";
 import "/src/popup.css";
@@ -10,12 +10,12 @@ function GameView(props){
         window.location.hash = "#/start"
     }
 
-    function guessCB(index){
+    function guessCB(i){
         // Lägg till loading screen när den laddar in bilden
-        const playerguesses = [selectedOptionBreed?.label || "---", selectedOptionOrigin?.label || "---"]
-        setIndex(index)
-        setSelectedOptionsBreed("Select Breed")
-        setSelectedOptionsOrigin("Select Origin")
+        const playerguesses = [props.selectedOptionBreed?.label || "---", props.selectedOptionOrigin?.label || "---"]
+        props.setIndex(i)
+        props.setSelectedOptionsBreed("Select Breed")
+        props.setSelectedOptionsOrigin("Select Origin")
         console.log(playerguesses)
         props.saveGuess(playerguesses)
 
@@ -23,17 +23,13 @@ function GameView(props){
 
     function handleSelectBreed(breed) {
         // Göra funktionen nedan till en prop?
-        setSelectedOptionsBreed(breed);
+        props.setSelectedOptionsBreed(breed);
     };
 
     function handleSelectOrigin(origin) {
         // Göra funtionen nedan till en prop?
-        setSelectedOptionsOrigin(origin);
+        props.setSelectedOptionsOrigin(origin);
     };
-
-    const [selectedOptionBreed, setSelectedOptionsBreed] = useState();
-    const [selectedOptionOrigin, setSelectedOptionsOrigin] = useState();
-    const [index, setIndex] = useState(0);
 
     return(
         <div>
@@ -61,7 +57,7 @@ function GameView(props){
             
             <div className = "game">
                 <div className = "dogImage">
-                    <img src = {props.dogArray[index].imgThumb}
+                    <img src = {props.dogArray[props.index].imgThumb}
                          height = {200}/>
                     <div className="timer">
                         {props.timer}
@@ -73,7 +69,7 @@ function GameView(props){
                         <Select
                             options={props.breeds} 
                             placeholder="Select Breed"
-                            value={selectedOptionBreed}
+                            value={props.selectedOptionBreed}
                             onChange={handleSelectBreed}
                             isSearchable={true}
                         />
@@ -84,14 +80,14 @@ function GameView(props){
                         <Select
                             options={props.origins} 
                             placeholder="Select Origin"
-                            value={selectedOptionOrigin}
+                            value={props.selectedOptionOrigin}
                             onChange={handleSelectOrigin}
                             isSearchable={true}
                         />
                     </div>
                 </div>
             </div>
-            <button onClick={() => guessCB(index + 1)}>Guess</button>
+            <button onClick={() => guessCB(props.index + 1)}>Guess</button>
         </div>
     );
 }
