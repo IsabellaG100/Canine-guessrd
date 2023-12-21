@@ -5,6 +5,7 @@ import Game from './presenters/gamePresenter'
 import Results from './presenters/resultsPresenter'
 import Login from './presenters/loginPresenter' 
 import Register from './presenters/registerPresenter'; 
+import Profile from './presenters/profilePresenter'; 
 
 
 import {createElement} from "react"
@@ -31,6 +32,10 @@ function makeRouter(model){
       {
           path: "/start",
           element: <Start model = {model}/>,
+      },      
+      {
+        path: "/profile",
+        element: <Profile model = {model}/>,
       },
       {
           path: "/leaderboard",

@@ -17,7 +17,7 @@ function StartView(props){
                 <Menu >
                     <a  id = "Profile" 
                         className = "menuItem" 
-                        href = "#/start">
+                        href = "#/profile">
                         Profile
                     </a>
 
