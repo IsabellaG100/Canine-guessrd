@@ -1,4 +1,3 @@
-import { useState } from "react"
 import {slide as Menu} from "react-burger-menu"
 
 export default function ResultsView(props){
@@ -51,7 +50,7 @@ export default function ResultsView(props){
 
             <h1>Score: {props.score} </h1>
 
-            <div className = "results">
+            <span className = "results">
                 <button onClick = {() => changeSlideACB(props.index - 1)}
                         disabled = {props.index === 0}
                         className = "resultsNavL">
@@ -85,7 +84,7 @@ export default function ResultsView(props){
                          height = {20}/>
                 </button>
 
-            </div>
+            </span>
 
             <button onClick = {startGameACB}>
                 Play again

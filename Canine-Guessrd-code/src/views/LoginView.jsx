@@ -1,16 +1,14 @@
 // loginView.jsx
-import React, { useState } from 'react';
+import React from 'react';
 
 function LoginView(props) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
 
     function handleEmailChange(e){
-        setEmail(e.target.value);
+        props.setEmail(e.target.value);
     }
     
     function handlePasswordChange(e){
-        setPassword(e.target.value);
+        props.setPassword(e.target.value);
     }
 
     function leaderboardACB(){
@@ -19,16 +17,6 @@ function LoginView(props) {
 
     return (
         <div>
-            {//Button to Leaderboard, might have to change prop
-            }
-            <div className = "leaderboardDiv">
-                <button onClick={leaderboardACB}
-                        className = "leaderboardButton">
-                    <img src = "https://svgshare.com/i/10ZW.svg"
-                         height = {35}/>
-                </button>
-            </div>
-
             {// Logo image, must decide where we want to store it
             }
             <img src = "https://svgshare.com/i/10ZE.svg"
@@ -39,16 +27,16 @@ function LoginView(props) {
                     <input className="loginform"
                         type="email" 
                         placeholder="Email" 
-                        value={email} 
+                        value={props.email} 
                         onChange={handleEmailChange} 
                     />
                     <input className="loginform" 
                         type="password" 
                         placeholder="Password" 
-                        value={password} 
+                        value={props.password} 
                         onChange={handlePasswordChange} 
                     />
-                    <button onClick={() => props.onLogin(email, password)}>Login</button>
+                    <button onClick={() => props.onLogin(props.email, props.password)}>Login</button>
                 </div>
                 
                 <p>Or continue with...</p>

@@ -1,11 +1,15 @@
 // registerPresenter.jsx
-import React from 'react';
+import React, {useState} from 'react';
 import RegisterView from '../views/RegisterView';
 import { useNavigate } from 'react-router-dom';
 
 
 function RegisterPresenter(props) {
     const navigate = useNavigate();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [username, setUsername] = useState('');
 
     const handleRegister = async (email, password, username) => {
         try {
@@ -35,6 +39,12 @@ function RegisterPresenter(props) {
                onRegister={handleRegister} 
                onRegisterWithGoogle={handleRegisterWithGoogle}
                onBackToLogin={handleBackToLogin}
+               email = {email}
+               password = {password}
+               username = {username}
+               setEmail = {setEmail}
+               setPassword = {setPassword}
+               setUsername = {setUsername}
            />;
 }
 

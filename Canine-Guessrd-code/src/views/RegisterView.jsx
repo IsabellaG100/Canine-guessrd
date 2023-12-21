@@ -1,22 +1,19 @@
 // registerView.jsx
-import React, { useState } from 'react';
+import React from 'react';
 
 function RegisterView(props) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
 
     // Update state on input change
     function handleEmailChange(e){
-        setEmail(e.target.value);
+        props.setEmail(e.target.value);
     }
 
     function handlePasswordChange(e){
-        setPassword(e.target.value);
+        props.setPassword(e.target.value);
     }
 
     function handleUsernameChange(e){
-        setUsername(e.target.value);
+        props.setUsername(e.target.value);
     }
 
     function homepageACB(){
@@ -36,22 +33,22 @@ function RegisterView(props) {
             <input className='registerform'
                 type="text"
                 placeholder="Username"
-                value={username}
+                value={props.username}
                 onChange={handleUsernameChange}
             />
             <input className='registerform'
                 type="email"
                 placeholder="Email"
-                value={email}
+                value={props.email}
                 onChange={handleEmailChange}
             />
             <input className='registerform'
                 type="password"
                 placeholder="Password"
-                value={password}
+                value={props.password}
                 onChange={handlePasswordChange}
             />
-            <button className='registerbuttons' onClick={() => props.onRegister(email, password, username)}>Register</button>
+            <button className='registerbuttons' onClick={() => props.onRegister(props.email, props.password, props.username)}>Register</button>
             <button className='registerbuttons' onClick={props.onRegisterWithGoogle}>Register with Google</button>
             <p>
                 Already have an account?

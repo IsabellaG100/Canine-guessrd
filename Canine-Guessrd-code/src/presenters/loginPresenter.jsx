@@ -1,10 +1,13 @@
 // loginPresenter.jsx
-import React from 'react';
+import React, {useState} from 'react';
 import LoginView from '../views/LoginView';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPresenter(props) {
     const navigate = useNavigate();
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const handleLogin = async (email, password) => {
         try {
@@ -40,6 +43,10 @@ function LoginPresenter(props) {
             onLogin={handleLogin} 
             onLoginWithGoogle={handleLoginWithGoogle}
             onNavigateRegister={handleNavigateRegister} 
+            email = {email}
+            password = {password}
+            setEmail = {setEmail}
+            setPassword = {setPassword}
         />
     );
 }

@@ -179,11 +179,13 @@ table tr:nth-child(even) {
 
 .resultsNavL{
   margin: 50px;
+  height: 60px;
   padding: 10px 13px 6px 10px;
 }
 
 .resultsNavR{
   margin: 50px;
+  height: 60px;
   padding: 10px 11px 6px 12px;
 }
 
