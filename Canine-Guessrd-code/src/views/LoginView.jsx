@@ -11,10 +11,6 @@ function LoginView(props) {
         props.setPassword(e.target.value);
     }
 
-    function leaderboardACB(){
-        window.location.hash = "#/leaderboard"
-    }
-
     return (
         <div>
             {// Logo image, must decide where we want to store it

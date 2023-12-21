@@ -91,3 +91,7 @@ button:disabled{
 .bm-overlay {
   background: transparent;
 }
+
+.select {
+  width: 200px;
+}

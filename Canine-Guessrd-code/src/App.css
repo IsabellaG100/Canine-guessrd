@@ -204,6 +204,7 @@ table tr:nth-child(even) {
 .answers{
   margin-right: 5px;
   text-align: left;
+  width: 250px;
 }
 
 .incorrect{

@@ -2,6 +2,7 @@
 import Select from "react-select";
 import Popup from "reactjs-popup";
 import "/src/popup.css";
+import "/src/index.css";
 
 
 function GameView(props){
@@ -66,7 +67,8 @@ function GameView(props){
                 <div>
                     <h2>Breed:</h2>
                     <div>
-                        <Select
+                        <Select 
+                            className = "select"
                             options={props.breeds} 
                             placeholder="Select Breed"
                             value={props.selectedOptionBreed}
@@ -77,7 +79,8 @@ function GameView(props){
 
                     <h2>Origin:</h2>
                     <div>
-                        <Select
+                        <Select 
+                            className = "select"
                             options={props.origins} 
                             placeholder="Select Origin"
                             value={props.selectedOptionOrigin}

@@ -25,7 +25,7 @@ class TimerStore {
   }
 
   resetTimer() {
-    this.timer = 5;
+    this.timer = 60;
   }
 }
 
