@@ -9,16 +9,6 @@ function LoginView(props) {
 
     return (
         <div>
-            {//Button to Leaderboard, might have to change prop
-            }
-            <div className = "leaderboardDiv">
-                <button onClick={leaderboardACB}
-                        className = "leaderboardButton">
-                    <img src = "https://svgshare.com/i/10ZW.svg"
-                         height = {35}/>
-                </button>
-            </div>
-
             {// Logo image, must decide where we want to store it
             }
             <img src = "https://svgshare.com/i/10ZE.svg"

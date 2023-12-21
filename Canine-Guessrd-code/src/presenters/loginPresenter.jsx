@@ -35,15 +35,15 @@ function LoginPresenter(props) {
     };
 
     return (
-        <LoginView 
+        <LoginView             
             email={email}
             onEmailChange={setEmail}
             password={password}
             onPasswordChange={setPassword}
-            onLogin={handleLogin} 
+            onLogin={handleLogin}
             error={error}
             onLoginWithGoogle={handleLoginWithGoogle}
-            onNavigateRegister={handleNavigateRegister} 
+            onNavigateRegister={handleNavigateRegister}
         />
     );
 }

@@ -1,4 +1,3 @@
-import { useState } from "react"
 import {slide as Menu} from "react-burger-menu"
 
 export default function ResultsView(props){
@@ -12,11 +11,9 @@ export default function ResultsView(props){
         window.location.hash = "#/game"
     }
 
-    function changeSlideACB(index){
-        setIndex(index)
+    function changeSlideACB(i){
+        props.setIndex(i)
     }
-
-    const [index, setIndex] = useState(0);
 
     return (
         <div>
@@ -53,15 +50,15 @@ export default function ResultsView(props){
 
             <h1>Score: {props.score} </h1>
 
-            <div className = "results">
-                <button onClick = {() => changeSlideACB(index - 1)}
-                        disabled = {index === 0}
+            <span className = "results">
+                <button onClick = {() => changeSlideACB(props.index - 1)}
+                        disabled = {props.index === 0}
                         className = "resultsNavL">
                     <img src = "https://svgshare.com/i/10Zg.svg"
                          height = {20}/>
                 </button>
 
-                <img src = {props.correctDogs[index].imgThumb}
+                <img src = {props.correctDogs[props.index].imgThumb}
                      height = {200}
                      className = "dogImage"/>
             <div>    
@@ -69,25 +66,25 @@ export default function ResultsView(props){
                     <p className = "answersTitle">
                         Breed:
                     </p>
-                    {displayAnswer(props.guessedDogs[index].breedName, props.correctDogs[index].breedName)}
+                    {displayAnswer(props.guessedDogs[props.index].breedName, props.correctDogs[props.index].breedName)}
                 </span>
 
                 <span className = "resultsText">
                     <p className = "answersTitle">
                         Origin: 
                     </p>
-                    {displayAnswer(props.guessedDogs[index].origin, props.correctDogs[index].origin)}
+                    {displayAnswer(props.guessedDogs[props.index].origin, props.correctDogs[props.index].origin)}
                 </span>
             </div>
 
-                <button onClick = {() => changeSlideACB(index + 1)}
-                        disabled = {index === props.guessedDogs.length - 1}
+                <button onClick = {() => changeSlideACB(props.index + 1)}
+                        disabled = {props.index === props.guessedDogs.length - 1}
                         className = "resultsNavR">
                     <img src = "https://svgshare.com/i/10Yw.svg"
                          height = {20}/>
                 </button>
 
-            </div>
+            </span>
 
             <button onClick = {startGameACB}>
                 Play again

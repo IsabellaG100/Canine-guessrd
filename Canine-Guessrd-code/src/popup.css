@@ -1,7 +1,6 @@
 .popup-content{
     margin: auto;
     background:#D9D9D9;
-    color: #052409;
     width:50%;
     padding:10px;
     border:1px solid #bcda12;
@@ -44,6 +43,24 @@
     align-content: space-between;
 }
 
-.modal-buttons{
-    margin-right: 10px;
-}
+.modal > .close{
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    width: auto;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 20px;
+    border-radius: 18px;
+    outline:none;
+  }
+
+  .modal > button{
+    width: 100px;
+  }
+
+  .modal > h1{
+    text-decoration: underline wavy;
+  }

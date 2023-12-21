@@ -1,11 +1,19 @@
 import GameView from "../views/gameView"
 import { observer } from "mobx-react-lite";
 import { useNavigate } from 'react-router-dom';
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import timerStore from "../TimerFile";
 
 export default observer( function Game(props){
-
+    
+    function resumeTimerACBHandler(){
+        timerStore.startTimer()
+    }
+    
+    function pauseTimerACBHandler(){
+        timerStore.stopTimer()
+    }
+    
     function sendGuesstoModelACB(guess){
         props.model.quiz.setGussedDogs(guess);
     }
@@ -34,6 +42,10 @@ export default observer( function Game(props){
           navigate('/login');
         }
       }, [props.model, navigate]);
+
+    const [selectedOptionBreed, setSelectedOptionsBreed] = useState();
+    const [selectedOptionOrigin, setSelectedOptionsOrigin] = useState();
+    const [index, setIndex] = useState(0);
     
     function gameFunction(dogPromiseState){
         
@@ -47,11 +59,19 @@ export default observer( function Game(props){
                 if(!props.model.quiz.showGame){
                     props.model.quiz.startGame()
             }                
-                return (<GameView dogArray = {props.model.quiz.choosenDogs} 
+                return (<GameView   dogArray = {props.model.quiz.choosenDogs} 
                                     breeds = {props.model.quiz.choosenDogBreeds} 
                                     origins = {props.model.quiz.choosenDogOrigin}
                                     saveGuess = {sendGuesstoModelACB}
-                                    timer = {timerStore.timer}/>);
+                                    timer = {timerStore.timer}
+                                    pauseTimer={pauseTimerACBHandler}
+                                    resumeTimer={resumeTimerACBHandler}
+                                    selectedOptionBreed = {selectedOptionBreed}
+                                    setSelectedOptionsBreed = {setSelectedOptionsBreed}
+                                    selectedOptionOrigin = {selectedOptionOrigin}
+                                    setSelectedOptionsOrigin = {setSelectedOptionsOrigin}
+                                    index = {index}
+                                    setIndex = {setIndex}/>);
         
             } else if (dogPromiseState.error){
                 return (dogPromiseState.error)
