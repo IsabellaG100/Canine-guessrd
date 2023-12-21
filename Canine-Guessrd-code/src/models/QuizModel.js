@@ -1,6 +1,6 @@
 import {getDogBreed} from "../dogBreedSource.js"
 import resolvePromise from "../resolvePromise.js";
-import { sortAlpabeticByAttribute, filterDuplicateValues, generateRandomArrayOfIndex } from "../utilities.js";
+import {sortAlpabeticByAttribute, filterDuplicateValues, generateRandomArrayOfIndex } from "../utilities.js";
 
 
 export default {
@@ -27,13 +27,10 @@ export default {
         this.setChoosenDogOrigin()
         this.showGame = true;
         this.showResult = false;
-
     },
     
     setGussedDogs(obj){
         this.guessedDogs = [...this.guessedDogs, {breedName: obj[0], origin: obj[1]}]        
-        
-
     },
 
     calculateScore(){
@@ -61,7 +58,6 @@ export default {
     value: dog id (int)
     label: dog breed (string)
     */
-    
     setChoosenDogBreeds(){
         if(this.choosenDogs !== null){
             this.choosenDogBreeds = filterDuplicateValues(this.choosenDogs, 'origin').map(function(dict_obj){
@@ -114,5 +110,4 @@ export default {
             resolvePromise(getDogBreed(), this.dogBreedPromiseState)
         }    
       },
-
 }

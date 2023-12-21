@@ -1,3 +1,4 @@
+
 function sortAlpabeticByAttribute(arr, attribute) {
     // Use the Array.sort() method to sort the array based on the attribute
     const modified_arr = [...arr]
@@ -18,13 +19,6 @@ function sortAlpabeticByAttribute(arr, attribute) {
     });
 
     return modified_arr;
-}
-
-function shuffleArray(array){
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
 }
 
 function filterDuplicateValues(array, attribute){
@@ -48,4 +42,4 @@ function generateRandomArrayOfIndex(){
 }
 
 
-export {shuffleArray, filterDuplicateValues, generateRandomArrayOfIndex, sortAlpabeticByAttribute}
+export {filterDuplicateValues, generateRandomArrayOfIndex, sortAlpabeticByAttribute}
