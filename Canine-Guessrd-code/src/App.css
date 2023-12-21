@@ -36,7 +36,14 @@
   100%{background-position:200%}
 }
 
-.startbutton {
+@keyframes ButtonClickPulse {
+  0%{transform: scale(1);}
+  50%{transform: scale(1.2);}
+  100%{transform: scale(1);}
+}
+
+.startbutton,
+.gamebutton {
   background-size: 700px;
   background-image: linear-gradient(270deg,#46a255, #c7cc6b4e, #46a255);
   border-radius: 30px;
@@ -52,7 +59,8 @@
   transition: padding 0.25s;
 }
 
-.startbutton:hover {
+.startbutton:hover,
+.gamebutton:hover {
   background-size: 1000px;
   background-image: linear-gradient(270deg,#46a255, #c7cc6b4e, #46a255);
   padding: 1em 2em;
@@ -60,8 +68,15 @@
 }
 
 .startbutton:focus,
-.startbutton:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+.startbutton:focus-visible,
+.gamebutton:focus,
+.gamebutton:focus-visible {
+  outline: none;
+}
+
+.startbutton:active,
+.gamebutton:active {
+  animation: ButtonClickPulse 0.5s 1;
 }
 
 .leaderboardDiv {
@@ -165,9 +180,18 @@ table tr:nth-child(even) {
   margin-right: 50px;
 }
 
+@keyframes Timer{
+  0%{transform: scale(1);
+     color: red;}
+  50%{transform: scale(1.1);
+      color: red;}
+  100%{transform: scale(1);
+       color: red;}
+}
 .timer{
   font-size: 40px;
   font-weight: bolder;
+  animation: Timer 1s ease 50s infinite;
 }
 
 .results{

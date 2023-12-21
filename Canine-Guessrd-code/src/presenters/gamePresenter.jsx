@@ -70,6 +70,7 @@ export default observer( function Game(props){
                                     setSelectedOptionsBreed = {setSelectedOptionsBreed}
                                     selectedOptionOrigin = {selectedOptionOrigin}
                                     setSelectedOptionsOrigin = {setSelectedOptionsOrigin}
+                                    buttonText = {(selectedOptionBreed || selectedOptionOrigin)? "Guess" : "Skip"}
                                     index = {index}
                                     setIndex = {setIndex}/>);
         
