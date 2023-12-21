@@ -1,6 +1,6 @@
 // profilePresenter.jsx
 import React, { useState, useEffect } from 'react';
-import ProfileView from './views/ProfileView';
+import ProfileView from '../views/profileView';
 import { useNavigate } from 'react-router-dom';
 
 function ProfilePresenter(props) {
@@ -10,6 +10,13 @@ function ProfilePresenter(props) {
     const [newUsername, setNewUsername] = useState('');
     const [newEmail, setNewEmail] = useState('');
     const [error, setError] = useState('');
+
+    // Redirect to login if not authenticated
+    useEffect(() => {
+        if (!props.model.firebase.isAuthenticated()) {
+            navigate('/login');
+        }
+    }, [props.model, navigate]);
 
     useEffect(() => {
         if (props.model.firebase.isAuthenticated()) {

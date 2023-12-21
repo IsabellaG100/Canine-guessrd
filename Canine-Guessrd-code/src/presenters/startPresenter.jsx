@@ -5,12 +5,17 @@ import React, { useEffect } from 'react';
 export default function Start(props){
     const navigate = useNavigate();
 
+    console.log(props.model.firebase.isAuthenticated());
+
     useEffect(() => {
         // Redirect to login if not authenticated
         if (!props.model.firebase.isAuthenticated()) {
           navigate('/login');
         }
       }, [props.model, navigate]);
+
+    const navigateToProfile = () => navigate('/profile');
+    const navigateToLeaderboard = () => navigate('/leaderboard');
 
     function generateGameACB(){
         props.model.quiz.showGame = false;
@@ -32,5 +37,10 @@ export default function Start(props){
             });
     }
 
-    return <StartView getDogs = {generateGameACB} logout={handleLogout}/>
+
+    return <StartView 
+               getDogs={generateGameACB} 
+               navigateToProfile={navigateToProfile} 
+               navigateToLeaderboard={navigateToLeaderboard} 
+               logout={handleLogout} />;
 }

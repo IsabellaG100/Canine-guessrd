@@ -4,10 +4,15 @@ import LoginView from '../views/LoginView';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPresenter(props) {
+
+    console.log(props.model.firebase.isAuthenticated());
+
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+
+    console.log(props.model.firebase.isAuthenticated());
 
     const handleLogin = async () => {
         try {
