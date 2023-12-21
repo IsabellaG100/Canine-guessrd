@@ -173,6 +173,7 @@ table tr:nth-child(even) {
 .results{
   display: flex;
   flex-flow: row;
+  height: 200px;
   padding: 50px;
   border-radius: 10px;
 }

@@ -2,7 +2,7 @@
 import { makeAutoObservable } from 'mobx';
 
 class TimerStore {
-  timer = 5; // Initial timer value in seconds
+  timer = 60; // Initial timer value in seconds
   timerId = null;
 
   constructor() {
