@@ -1,20 +1,22 @@
 // loginPresenter.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import LoginView from '../views/LoginView';
 import { useNavigate } from 'react-router-dom';
 
 function LoginPresenter(props) {
     const navigate = useNavigate();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-    const handleLogin = async (email, password) => {
+    const handleLogin = async () => {
         try {
             // Use the login function passed as a prop
             await props.model.firebase.login(email, password);
             // Navigate to the start page after successful login
-            
             navigate('/start');
-        } catch (error) {
-            alert('Login Failed: ' + error.message);
+        } catch (er) {
+            setError(er.message);
         }
     };
 
@@ -22,12 +24,9 @@ function LoginPresenter(props) {
         try {
             // Use the Google login function passed as a prop
             await props.model.firebase.loginWithGoogle();
-            //console.log("(In presenter) Auth User after Google Login:", props.model.firebase.authUser);
-            // Navigate to the start page after successful login
-            //console.log("(inpresenter: navigating to /start)");
             navigate('/start');
-        } catch (error) {
-            alert('Google Login Failed: ' + error.message);
+        } catch (er) {
+            setError(er.message);
         }
     };
 
@@ -37,7 +36,12 @@ function LoginPresenter(props) {
 
     return (
         <LoginView 
+            email={email}
+            onEmailChange={setEmail}
+            password={password}
+            onPasswordChange={setPassword}
             onLogin={handleLogin} 
+            error={error}
             onLoginWithGoogle={handleLoginWithGoogle}
             onNavigateRegister={handleNavigateRegister} 
         />

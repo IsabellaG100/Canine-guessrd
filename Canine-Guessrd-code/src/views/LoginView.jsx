@@ -1,17 +1,7 @@
 // loginView.jsx
-import React, { useState } from 'react';
+import React from 'react';
 
 function LoginView(props) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-
-    function handleEmailChange(e){
-        setEmail(e.target.value);
-    }
-    
-    function handlePasswordChange(e){
-        setPassword(e.target.value);
-    }
 
     function leaderboardACB(){
         window.location.hash = "#/leaderboard"
@@ -39,17 +29,19 @@ function LoginView(props) {
                     <input className="loginform"
                         type="email" 
                         placeholder="Email" 
-                        value={email} 
-                        onChange={handleEmailChange} 
+                        value={props.email} 
+                        onChange={(e) => props.onEmailChange(e.target.value)}
                     />
                     <input className="loginform" 
                         type="password" 
                         placeholder="Password" 
-                        value={password} 
-                        onChange={handlePasswordChange} 
+                        value={props.password} 
+                        onChange={(e) => props.onPasswordChange(e.target.value)} 
                     />
-                    <button onClick={() => props.onLogin(email, password)}>Login</button>
+                    <button onClick={props.onLogin}>Login</button>
                 </div>
+
+                {props.error && <p className="error">{props.error}</p>}
                 
                 <p>Or continue with...</p>
                 <button onClick={props.onLoginWithGoogle}>

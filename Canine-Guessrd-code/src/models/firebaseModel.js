@@ -47,6 +47,17 @@ class FirebaseModel {
 
     // Async method to register a new user with email, password, and username
     async register(email, password, username) {
+        // Validate input
+        if (!email || !password || !username) {
+            throw new Error("Please fill in all fields.");
+        }
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            throw new Error("Invalid email format.");
+        }
+        if (password.length < 6) {
+            throw new Error("Password must be at least 6 characters.");
+        }
+        
         try {
             // Check if username already exists
             const usernameRef = ref(this.database, `usernames/${username}`);
@@ -69,21 +80,27 @@ class FirebaseModel {
             });
             return this.authUser;
         } catch (error) {
-            console.error('Register Error:', error);
-            throw error;
+            // Throw the error to be handled by the presenter/view
+            throw new Error(this.mapFirebaseErrorToMessage(error) || error.message);
         }
     }
     
 
     // Async method to login a user with email and password
     async login(email, password) {
+        // Validate input
+        if (!email || !password) {
+            throw new Error("Please fill in both email and password.");
+        }
+        if (!/^\S+@\S+\.\S+$/.test(email)) {
+            throw new Error("Invalid email format.");
+        }
         try {
             const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
             this.setAuthUser(userCredential.user);
             return this.authUser;
         } catch (error) {
-            console.error('Login Error:', error);
-            throw error;
+            throw new Error(this.mapFirebaseErrorToMessage(error));
         }
     }
 
@@ -110,8 +127,7 @@ class FirebaseModel {
     
             return this.authUser;
         } catch (error) {
-            console.error('Google Login Error:', error);
-            throw error;
+            throw new Error(this.mapFirebaseErrorToMessage(error));
         }
     }
 
@@ -121,8 +137,7 @@ class FirebaseModel {
             await signOut(this.auth); // Firebase sign-out
             this.setAuthUser(null); // Reset the authenticated user to null
         } catch (error) {
-            console.error('Logout Error:', error);
-            throw error;
+            throw new Error(this.mapFirebaseErrorToMessage(error));
         }
     }
 
@@ -134,8 +149,7 @@ class FirebaseModel {
                 highscore
             });
         } catch (error) {
-            console.error('Error updating leaderboard:', error);
-            throw error;
+            throw new Error(this.mapFirebaseErrorToMessage(error));
         }
     }
 
@@ -157,8 +171,7 @@ class FirebaseModel {
                 }
             }
         } catch (error) {
-            console.error('Error checking/updating highscore:', error);
-            throw error;
+            throw new Error(this.mapFirebaseErrorToMessage(error));
         }
     }
 
@@ -189,6 +202,33 @@ class FirebaseModel {
             console.error('Error fetching user data:', error);
             callback(null);
         });
+    }
+
+    // Method that takes a Firebase error code and returns a more understandable error message
+    mapFirebaseErrorToMessage(error) {
+        // Check if error.code is available, otherwise use error.message
+        const errorCode = error.code || error.message;
+
+        switch (errorCode) {
+            case 'auth/invalid-credential':
+                return 'Invalid email or password.';
+            case 'auth/invalid-email':
+                return 'Invalid email format.';
+            case 'auth/user-not-found':
+            case 'auth/wrong-password':
+                return 'Invalid email or password.';
+            case 'auth/weak-password':
+                return 'Password is too weak.';
+            case 'auth/email-already-in-use':
+                return 'Email is already in use.';
+            case 'auth/username-already-in-use':
+                return 'Username is already taken.';
+            case 'Username already taken':
+                return 'Username is already taken.';
+            // Add more cases as needed
+            default:
+                return 'An error occurred. Please try again.';
+        }
     }
 }
 

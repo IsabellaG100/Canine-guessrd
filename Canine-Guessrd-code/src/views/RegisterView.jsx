@@ -1,23 +1,7 @@
 // registerView.jsx
-import React, { useState } from 'react';
+import React from 'react';
 
 function RegisterView(props) {
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [username, setUsername] = useState('');
-
-    // Update state on input change
-    function handleEmailChange(e){
-        setEmail(e.target.value);
-    }
-
-    function handlePasswordChange(e){
-        setPassword(e.target.value);
-    }
-
-    function handleUsernameChange(e){
-        setUsername(e.target.value);
-    }
 
     function homepageACB(){
         window.location.hash = "#/login"
@@ -36,22 +20,23 @@ function RegisterView(props) {
             <input className='registerform'
                 type="text"
                 placeholder="Username"
-                value={username}
-                onChange={handleUsernameChange}
+                value={props.username}
+                onChange={(e) => props.onUsernameChange(e.target.value)}
             />
             <input className='registerform'
                 type="email"
                 placeholder="Email"
-                value={email}
-                onChange={handleEmailChange}
+                value={props.email}
+                onChange={(e) => props.onEmailChange(e.target.value)}
             />
             <input className='registerform'
                 type="password"
                 placeholder="Password"
-                value={password}
-                onChange={handlePasswordChange}
+                value={props.password}
+                onChange={(e) => props.onPasswordChange(e.target.value)}
             />
-            <button className='registerbuttons' onClick={() => props.onRegister(email, password, username)}>Register</button>
+            {props.error && <p className="error">{props.error}</p>}
+            <button className='registerbuttons' onClick={props.onRegister}>Register</button>
             <button className='registerbuttons' onClick={props.onRegisterWithGoogle}>Register with Google</button>
             <p>
                 Already have an account?
