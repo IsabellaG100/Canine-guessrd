@@ -17,6 +17,8 @@ export default {
     choosenDogBreeds: null, // these are the options the user can choose between
     choosenDogOrigin: null, // these are the options the user can choose between
     guessedDogs: [],
+    correctAnswerBreed: false,
+    correctAnswerOrigin: false,
 
     startGame(){
         this.score = 0;
@@ -30,7 +32,17 @@ export default {
     },
     
     setGussedDogs(obj){
-        this.guessedDogs = [...this.guessedDogs, {breedName: obj[0], origin: obj[1]}]        
+        this.correctAnswerBreed = false
+        this.correctAnswerOrigin = false
+
+        this.guessedDogs = [...this.guessedDogs, {breedName: obj[0], origin: obj[1]}] 
+        if (obj[0] === this.choosenDogs[this.guessedDogs.length-1].breedName){
+            this.correctAnswerBreed = true
+        }
+        if (obj[1] === this.choosenDogs[this.guessedDogs.length-1].origin){
+            this.correctAnswerOrigin = true
+        }
+
     },
 
     calculateScore(){
@@ -53,11 +65,6 @@ export default {
         }
     },
 
-    /*
-     sets this.choosenDogbreeds which is an array of dog objects with only 2 attributes, 
-    value: dog id (int)
-    label: dog breed (string)
-    */
     setChoosenDogBreeds(){
         if(this.choosenDogs !== null){
             this.choosenDogBreeds = filterDuplicateValues(this.choosenDogs, 'origin').map(function(dict_obj){
@@ -70,10 +77,7 @@ export default {
         }
     },
 
-    /*
-    sets this.choosenDogOrigin which is an array of dog objects with only 2 attributes, 
-    value: dog id (int)
-    label: dog Origin (string)    */
+
     setChoosenDogOrigin(){ 
         if(this.choosenDogs !== null){
             this.choosenDogOrigin= filterDuplicateValues(this.choosenDogs, 'origin').map(function(dict_obj){
@@ -86,11 +90,6 @@ export default {
         }
     },
 
-     /*
-    returns, Depending of the array with random ints (index) an array with dictionary objects of the dogs that are choosen 
-    They are put in the variable choosenDogs if it is not already filled, otherviwse the function returns the choosenDogs variable
-    choosenDogs is an array with dictionary objects of the dogs (dogbreed, origin, img) that is going to be used in the game turn
-    */
     getChoosenDogs(){
             this.choosenDogs = this.RandomDogIndexArray.map(index => this.dogBreedPromiseState.data[index])
             console.log("this.choosenDogs",this.choosenDogs)
@@ -102,7 +101,7 @@ export default {
     },
 
     /*
-    Calls the API if it data haven't been retrieved yet. The data (JSON array)
+    Calls the API if it data haven't been retrieved yet.The data (JSON array)
     will be stored in this.dogBreedPromiseState.data
     */
     getDataFromAPI() {
