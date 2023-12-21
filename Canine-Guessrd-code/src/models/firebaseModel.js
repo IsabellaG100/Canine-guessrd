@@ -133,6 +133,7 @@ class FirebaseModel {
 
     // Async method to logout the current user
     async logout() {
+        //console.log('(firebaseModel) In logout');
         try {
             await signOut(this.auth); // Firebase sign-out
             this.setAuthUser(null); // Reset the authenticated user to null
@@ -228,36 +229,6 @@ class FirebaseModel {
             // Add more cases as needed
             default:
                 return 'An error occurred. Please try again.';
-        }
-    }
-
-    // Method to update the user's email
-    async updateEmail(newEmail) {
-        try {
-            await updateEmail(this.authUser, newEmail);
-            // Update email in the user's database record as well
-            await set(ref(this.database, `users/${this.authUser.uid}/email`), newEmail);
-        } catch (error) {
-            throw new Error(this.mapFirebaseErrorToMessage(error));
-        }
-    }
-
-    // Method to update the user's username
-    async updateUsername(newUsername) {
-        try {
-            // Check if new username already exists
-            const usernameRef = ref(this.database, `usernames/${newUsername}`);
-            const usernameSnapshot = await get(usernameRef);
-            if (usernameSnapshot.exists()) {
-                throw new Error("Username already taken");
-            }
-
-            // Update username in the user's database record
-            await set(ref(this.database, `users/${this.authUser.uid}/username`), newUsername);
-            // Update username in the separate username node for easy lookup
-            await set(ref(this.database, `usernames/${newUsername}`), true);
-        } catch (error) {
-            throw new Error(this.mapFirebaseErrorToMessage(error));
         }
     }
 }

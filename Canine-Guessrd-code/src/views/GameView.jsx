@@ -17,7 +17,7 @@ function GameView(props){
         props.setIndex(i)
         props.setSelectedOptionsBreed(null)
         props.setSelectedOptionsOrigin(null)
-        console.log(playerguesses)
+        //console.log(playerguesses)
         props.saveGuess(playerguesses)
 
     };

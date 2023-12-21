@@ -22,7 +22,7 @@ export default observer( function Game(props){
     useEffect(() => {
         if (timerStore.timer === 0) {
           // Timer reached 0, end the game and navigate to a new route
-          console.log("the timer ended");
+          //console.log("the timer ended");
           window.location.hash = "#/results"
         }
       }, [timerStore.timer]);

@@ -59,7 +59,7 @@ export default {
                 })
                 this.showResult = true
             }
-                console.log("You recived the score:",this.score)
+                //console.log("You recived the score:",this.score)
         }else{
             this.guessedDogs = [{breedName: "---", origin: "---"}]
         }
@@ -73,7 +73,7 @@ export default {
             });
             this.choosenDogBreeds = sortAlpabeticByAttribute(this.choosenDogBreeds, "label") // sorts the options in alphabetical order
         }else{
-            console.log("this.choosen dogs is unfilled")
+            //console.log("this.choosen dogs is unfilled")
         }
     },
 
@@ -86,13 +86,13 @@ export default {
             })
             this.choosenDogOrigin = sortAlpabeticByAttribute(this.choosenDogOrigin, "label") // sorts the options in alphabetical order
         }else{
-            console.log("this.choosen dogs is unfilled")
+            //console.log("this.choosen dogs is unfilled")
         }
     },
 
     getChoosenDogs(){
             this.choosenDogs = this.RandomDogIndexArray.map(index => this.dogBreedPromiseState.data[index])
-            console.log("this.choosenDogs",this.choosenDogs)
+            //console.log("this.choosenDogs",this.choosenDogs)
             return this.choosenDogs
     },
    

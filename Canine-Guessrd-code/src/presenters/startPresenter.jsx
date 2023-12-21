@@ -5,8 +5,6 @@ import React, { useEffect } from 'react';
 export default function Start(props){
     const navigate = useNavigate();
 
-    console.log(props.model.firebase.isAuthenticated());
-
     useEffect(() => {
         // Redirect to login if not authenticated
         if (!props.model.firebase.isAuthenticated()) {
@@ -21,8 +19,8 @@ export default function Start(props){
         props.model.quiz.showGame = false;
         props.model.quiz.showResult = false;
         props.model.quiz.getDataFromAPI()
-        console.log("This is the index array", props.model.quiz.RandomArrayDogIndex)
-        console.log("promisestate at start", props.model.quiz.dogBreedPromiseState)
+        //console.log("This is the index array", props.model.quiz.RandomArrayDogIndex)
+        //console.log("promisestate at start", props.model.quiz.dogBreedPromiseState)
         //props.model.quiz.generateRandomArrayOfIndex()
         //console.log(props.model.quiz.RandomArrayDogIndex)
     }
