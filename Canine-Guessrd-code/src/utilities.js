@@ -36,7 +36,7 @@ function filterDuplicateValues(array, attribute){
     will choose 100 (check the number after length:) random dogbreeds from the data from the API
     */ 
 function generateRandomArrayOfIndex(){
-    return Array.from({length:100}, ()=> {
+    return Array.from({length:50}, ()=> {
         return Math.floor(Math.random()*317)
     });
 }
