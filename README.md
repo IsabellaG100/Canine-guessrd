@@ -5,7 +5,7 @@ Our project is building a dogbreed quiz website. When pressing start the user wi
 # Project Strcuture
 Your project file structure (short description/purpose of each file)
 Outside of source we have our configureration files. We use vite to create a react website and we use firebase to store information and depoly the app. We are using mobx for a reactive model. 
- -src 
+# src 
     - assets: Here we have all of our icons. 
     - models: Here we have our two models
               - QuizModel.js: The model for the game functionality. 
