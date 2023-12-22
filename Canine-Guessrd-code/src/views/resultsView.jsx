@@ -19,9 +19,15 @@ export default function ResultsView(props){
         <div>
             <div className = "dropdownMenu">
                 <Menu >
-                    <a  id = "Profile" 
+                    <a  id = "Home" 
                         className = "menuItem" 
                         href = "#/start">
+                        Home
+                    </a>
+
+                    <a  id = "Profile" 
+                        className = "menuItem" 
+                        href = "#/profile">
                         Profile
                     </a>
 

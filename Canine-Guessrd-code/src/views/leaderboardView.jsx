@@ -1,3 +1,5 @@
+import {slide as Menu} from "react-burger-menu";
+
 export default function LeaderboardView(props){
 
     function backACB(){
@@ -11,12 +13,32 @@ export default function LeaderboardView(props){
     return (
         <div>
 
-            <div className = "leaderboardDiv">
-                <button onClick = {backACB}
-                        className = "backButton">
-                    <img src = "https://svgshare.com/i/10Zg.svg"
-                         height = {20}/>
-                </button>
+            <div className = "dropdownMenu">
+                <Menu >
+                    <a  id = "Home" 
+                        className = "menuItem" 
+                        href = "#/start">
+                        Home
+                    </a>
+
+                    <a  id = "Profile" 
+                        className = "menuItem" 
+                        href = "#/profile">
+                        Profile
+                    </a>
+
+                    <a  id = "Leaderboard" 
+                        className = "menuItem" 
+                        href = "#/leaderboard">
+                        Leaderboard
+                    </a>
+
+                    <a  id = "Logout" 
+                        className = "menuItem" 
+                        href = "#/login">
+                        Log out
+                    </a>
+                </Menu>
             </div>
 
             <div className = "minilogoDiv">
@@ -40,6 +62,14 @@ export default function LeaderboardView(props){
                         {props.leaderboardData.map(playersTableRowCB)}
                     </tbody>
                 </table>
+            </div>
+
+            <div className = "backDiv">
+                <button onClick = {backACB}
+                        className = "backButton">
+                    <img src = "https://svgshare.com/i/10Zg.svg"
+                         height = {20}/>
+                </button>
             </div>
 
         </div>
