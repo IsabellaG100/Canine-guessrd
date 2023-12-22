@@ -1,6 +1,6 @@
 // registerPresenter.jsx
 import React, { useState } from 'react';
-import RegisterView from '../views/RegisterView';
+import RegisterView from '../views/registerView';
 import { useNavigate } from 'react-router-dom';
 
 
