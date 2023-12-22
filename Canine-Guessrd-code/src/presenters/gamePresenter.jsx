@@ -72,7 +72,10 @@ export default observer( function Game(props){
                                     setSelectedOptionsOrigin = {setSelectedOptionsOrigin}
                                     buttonText = {(selectedOptionBreed || selectedOptionOrigin)? "Guess" : "Skip"}
                                     index = {index}
-                                    setIndex = {setIndex}/>);
+                                    setIndex = {setIndex}
+                                    correctAnswerBreed = {props.model.quiz.correctAnswerBreed}
+                                    correctAnswerOrigin = {props.model.quiz.correctAnswerOrigin}
+                                    />);
         
             } else if (dogPromiseState.error){
                 return (dogPromiseState.error)

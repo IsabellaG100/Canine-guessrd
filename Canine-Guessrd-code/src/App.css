@@ -194,6 +194,23 @@ table tr:nth-child(even) {
   animation: Timer 1s ease 50s infinite;
 }
 
+@keyframes FadeInAndOut{
+  0%{opacity: 0%;}
+  25%{opacity: 100%;}
+  75%{opacity: 100%;}
+  100%{opacity: 0%;}
+}
+
+.answersfeedback{
+  opacity: 0%;
+  top: -20px;
+  display:inline;
+  position:relative;
+  font-family: 'Fredoka One', sans-serif;
+  font-size: 0.5em;
+  animation: FadeInAndOut 1s ease 1;
+}
+
 .results{
   display: flex;
   flex-flow: row;

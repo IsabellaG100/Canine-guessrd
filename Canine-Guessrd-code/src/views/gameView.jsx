@@ -65,7 +65,7 @@ function GameView(props){
                     </div>
                 </div>
                 <div>
-                    <h2>Breed:</h2>
+                    <h2>Breed: <span className="answersfeedback" key={props.index}>{props.correctAnswerBreed}</span></h2>
                     <div>
                         <Select 
                             className = "select"
@@ -77,7 +77,7 @@ function GameView(props){
                         />
                     </div>
 
-                    <h2>Origin:</h2>
+                    <h2>Origin: <span className="answersfeedback" key={props.index}>{props.correctAnswerOrigin}</span></h2>
                     <div>
                         <Select 
                             className = "select"

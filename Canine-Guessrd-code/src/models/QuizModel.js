@@ -13,12 +13,12 @@ export default {
     score: 0,
     dogBreedPromiseState: {},
     RandomDogIndexArray:[],
-    choosenDogs: null,
+    choosenDogs: [],
     choosenDogBreeds: null, // these are the options the user can choose between
     choosenDogOrigin: null, // these are the options the user can choose between
     guessedDogs: [],
-    correctAnswerBreed: false,
-    correctAnswerOrigin: false,
+    correctAnswerBreed: "",
+    correctAnswerOrigin: "",
 
     startGame(){
         this.score = 0;
@@ -29,18 +29,20 @@ export default {
         this.setChoosenDogOrigin()
         this.showGame = true;
         this.showResult = false;
+        this.correctAnswerBreed = "";
+        this.correctAnswerOrigin = "";
     },
     
     setGussedDogs(obj){
-        this.correctAnswerBreed = false
-        this.correctAnswerOrigin = false
+        this.correctAnswerBreed = "Wrong"
+        this.correctAnswerOrigin = "Wrong"
 
         this.guessedDogs = [...this.guessedDogs, {breedName: obj[0], origin: obj[1]}] 
         if (obj[0] === this.choosenDogs[this.guessedDogs.length-1].breedName){
-            this.correctAnswerBreed = true
+            this.correctAnswerBreed = "Correct!"
         }
         if (obj[1] === this.choosenDogs[this.guessedDogs.length-1].origin){
-            this.correctAnswerOrigin = true
+            this.correctAnswerOrigin = "Correct!"
         }
 
     },
