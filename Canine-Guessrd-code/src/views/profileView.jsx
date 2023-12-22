@@ -53,16 +53,15 @@ function ProfileView(props) {
             </div>
 
             <h1>Profile</h1>
-            <p>Username: {props.username}</p>
-            <p>Highscore: {props.highscore}</p>
+            <h2>Username: {props.username}</h2>
+            <h2>Highscore: {props.highscore}</h2>
 
             {props.error && <p className="error">{props.error}</p>}
 
             <div className = "backDiv">
                 <button onClick = {backACB}
                         className = "backButton">
-                    <img src = "https://svgshare.com/i/10Zg.svg"
-                         height = {20}/>
+                Back
                 </button>
             </div>
 
