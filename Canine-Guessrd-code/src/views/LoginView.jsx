@@ -9,8 +9,6 @@ function LoginView(props) {
 
     return (
         <div>
-            {// Logo image, must decide where we want to store it
-            }
             <img src = "https://svgshare.com/i/10ZE.svg"
                  height = {400}/>
 

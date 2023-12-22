@@ -90,36 +90,8 @@
 }
 
 .table-container {
-  margin-top: 50px; /* Space from the top */
+  margin-top: 50px;
 }
-
-table {
-  width: 100%; /* Full width */
-  border-collapse: collapse; /* Collapse borders */
-  margin: 0 auto; /* Center table */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Shadow for depth */
-}
-
-table thead {
-  background-color: #4CAF50; /* Green header */
-  color: white; /* White text in header */
-}
-
-table th,
-table td {
-  padding: 15px; /* Spacing inside cells */
-  border: 1px solid #ddd; /* Light border for cells */
-  text-align: left; /* Align text to left */
-}
-
-table th {
-  font-size: 1.2em; /* Slightly larger font in headers */
-}
-
-table tr:nth-child(even) {
-  background-color: #f2f2f2; /* Zebra striping for rows */
-}
-
 
 .dropdownMenu{
   position: absolute;

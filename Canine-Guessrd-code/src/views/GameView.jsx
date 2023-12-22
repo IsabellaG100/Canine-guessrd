@@ -12,23 +12,19 @@ function GameView(props){
     }
 
     function guessCB(i){
-        // Lägg till loading screen när den laddar in bilden
         const playerguesses = [props.selectedOptionBreed?.label || "---", props.selectedOptionOrigin?.label || "---"]
         props.setIndex(i)
         props.setSelectedOptionsBreed(null)
         props.setSelectedOptionsOrigin(null)
-        //console.log(playerguesses)
         props.saveGuess(playerguesses)
 
     };
 
     function handleSelectBreed(breed) {
-        // Göra funktionen nedan till en prop?
         props.setSelectedOptionsBreed(breed);
     };
 
     function handleSelectOrigin(origin) {
-        // Göra funtionen nedan till en prop?
         props.setSelectedOptionsOrigin(origin);
     };
 
