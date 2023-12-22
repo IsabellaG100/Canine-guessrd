@@ -21,5 +21,15 @@ export default function Leaderboard(props){
         });
     }, [props.model.firebase]);
 
-    return <LeaderboardView leaderboardData={leaderboardData}/>
+    function handleLogout() {
+        props.model.firebase.logout()
+            .then(() => {
+                navigate('/login'); // Redirect to login view after successful logout
+            })
+            .catch((error) => {
+                console.error('Logout failed:', error);
+            });
+    }
+
+    return <LeaderboardView leaderboardData={leaderboardData} logout={handleLogout}/>
 }
