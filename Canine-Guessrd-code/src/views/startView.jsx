@@ -73,7 +73,7 @@ function StartView(props){
                         <button className="close" onClick={close}>
                             &times;
                         </button>
-                        <img src="/src/assets/howtoplay.gif">
+                        <img src="https://s13.gifyu.com/images/SjKIB.gif">
                         </img>
                         <button onClick={close}>
                             Got it!
