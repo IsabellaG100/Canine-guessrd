@@ -34,22 +34,32 @@ In /src:
 
 How to set up:
 These are all of our dependecies.
-1.  "@reduxjs/toolkit": "^2.0.1",
-2.  "firebase": "^10.7.0",
-3.  "localforage": "^1.10.0",
-4.  "match-sorter": "^6.3.1",
-5.  "mobx": "^6.12.0",
-6.  "mobx-react": "^9.1.0",
-7.  "react": "^18.2.0",
-8.  "react-burger-menu": "^3.0.9",
-9.  "react-dom": "^18.2.0",
-10. "react-redux": "^9.0.0",
-11. "react-router-dom": "^6.20.1",
-12. "react-select": "^5.8.0",
-13. "reactjs-popup": "^2.0.6",
-14. "redux": "^5.0.0",
-15. "redux-thunk": "^3.1.0",
-16. "sort-by": "^0.0.2"
+1.  "firebase": "^10.7.0",
+2.  "localforage": "^1.10.0",
+3.  "match-sorter": "^6.3.1",
+4.  "mobx": "^6.12.0",
+5.  "mobx-react": "^9.1.0",
+6.  "react": "^18.2.0",
+7.  "react-burger-menu": "^3.0.9",
+8.  "react-dom": "^18.2.0",
+9.  "react-router-dom": "^6.20.1",
+10. "react-select": "^5.8.0",
+11. "reactjs-popup": "^2.0.6",
+12. "sort-by": "^0.0.2"
 
 If you haven't installed npm yet, then just writing "npm install" should be all you need to setup.
-If it doesn't work you can try to npm install every dependecy one by one. 
+If it doesn't work you can try to install every dependecy one by one. You do this by writing:
+
+1.  npm install firebase@^10.7.0
+2.  npm install localforage@^1.10.0
+3.  npm install match-sorter@^6.3.1
+4.  npm install mobx@^6.12.0
+5.  npm install mobx-react@^9.1.0
+6.  npm install react@^18.2.0
+7.  npm install react-burger-menu@^3.0.9
+8.  npm install react-dom@^18.2.0
+9.  npm install react-router-dom@^6.20.1
+10. npm install react-select@^5.8.0
+11. npm install reactjs-popup@^2.0.6
+12. npm install sort-by@^0.0.2
+
