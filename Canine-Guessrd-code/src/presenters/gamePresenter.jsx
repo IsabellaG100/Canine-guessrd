@@ -21,8 +21,6 @@ export default observer( function Game(props){
 
     useEffect(() => {
         if (timerStore.timer === 0) {
-          // Timer reached 0, end the game and navigate to a new route
-          //console.log("the timer ended");
           window.location.hash = "#/results"
         }
       }, [timerStore.timer]);
@@ -48,11 +46,6 @@ export default observer( function Game(props){
     const [index, setIndex] = useState(0);
     
     function gameFunction(dogPromiseState){
-        
-        //console.log("promisestate in game:", dogPromiseState)
-        //console.log("data in game:", dogPromiseState.data)
-
-
         if (dogPromiseState?.promise){
 
             if (dogPromiseState.data){
@@ -73,8 +66,8 @@ export default observer( function Game(props){
                                     buttonText = {(selectedOptionBreed || selectedOptionOrigin)? "Guess" : "Skip"}
                                     index = {index}
                                     setIndex = {setIndex}
-                                    correctAnswerBreed = {props.model.quiz.correctAnswerBreed}
-                                    correctAnswerOrigin = {props.model.quiz.correctAnswerOrigin}
+                                    correctAnswerBreed = {{answer: props.model.quiz.correctAnswerBreed, color: (props.model.quiz.correctAnswerBreed === "Correct!")? "#006e37" : "red"}}
+                                    correctAnswerOrigin = {{answer: props.model.quiz.correctAnswerOrigin, color: (props.model.quiz.correctAnswerOrigin === "Correct!")? "#006e37" : "red"}}
                                     />);
         
             } else if (dogPromiseState.error){

@@ -76,7 +76,7 @@ function GameView(props){
                         </p>
                     </div>
                     <div>
-                        <h2>Breed: <span className="answersfeedback" key={props.index}>{props.correctAnswerBreed}</span></h2>
+                        <h2>Breed: <span className="answersfeedback" key={props.index} style={{color:props.correctAnswerBreed.color}}>{props.correctAnswerBreed.answer}</span></h2>
                         <div>
                             <Select 
                                 className = "select"
@@ -88,7 +88,7 @@ function GameView(props){
                             />
                         </div>
 
-                        <h2>Origin: <span className="answersfeedback" key={props.index}>{props.correctAnswerOrigin}</span></h2>
+                        <h2>Origin: <span className="answersfeedback" key={props.index} style={{color:props.correctAnswerOrigin.color}}>{props.correctAnswerOrigin.answer}</span></h2>
                         <div>
                             <Select 
                                 className = "select"
@@ -99,14 +99,13 @@ function GameView(props){
                                 isSearchable={true}
                             />
                         </div>
+                        <button className="gamebutton"
+                                onClick={() => guessCB(props.index + 1)}>
+                                {props.buttonText}
+                        </button>
                     </div>
                 </div>
             </div>
-
-            <button className="gamebutton"
-                    onClick={() => guessCB(props.index + 1)}>
-                    {props.buttonText}
-            </button>
         </div>
     );
 }
