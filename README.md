@@ -2,12 +2,6 @@
 A brief description of our project:
 Our project is building a dogbreed quiz website. When pressing start the user will se a picture of a dog and will have to guess the breed and origin of the dog in the picture. If they guess correct they will receive a point for each correct answer. Then the next dog will be shown. The quiz will be on time so the user have to guess the breed and origin of the dogs as fast as possible. When the time is over the user will recieve a score that will be placed on a leader board. To able to save the different users score the player will have to login/register before playing.  
 
-What we've done so far:
-So far we have created a model for the quiz and added some functionality, created startView and startPresenter, we have also started to implement gameView and gamePresenter, but it is not finished. We have connected with the API so that we can get information from it and started with the design of the website so CSS and logos amongst other things. 
-
-What you still plan to do:
-We still need to write the firebaseModel file and create the functionality of creating and saving users and their score. We also have to create the view and presenter for the leader board, results and authentication as well as create the functionality of a timer in the game. We have to finish the gameview and presenter as well so that it works. We also have to finished the Quiz model for all the game's functionality.
-
 Your project file structure (short description/purpose of each file)
 Outside of source we have our configureration files. We use vite to create a react website and we use firebase to store information and depoly the app. We are using mobx for a reactive model. 
 In /src:
@@ -37,4 +31,25 @@ In /src:
     - Quizmodel.js: Our model with the game functionality.
     - resolvePromise.js: Has the function that resolve the promise that the fetching of the API gives us.  
 
-             
+
+How to set up:
+These are all of our dependecies.
+1.  "@reduxjs/toolkit": "^2.0.1",
+2.  "firebase": "^10.7.0",
+3.  "localforage": "^1.10.0",
+4.  "match-sorter": "^6.3.1",
+5.  "mobx": "^6.12.0",
+6.  "mobx-react": "^9.1.0",
+7.  "react": "^18.2.0",
+8.  "react-burger-menu": "^3.0.9",
+9.  "react-dom": "^18.2.0",
+10. "react-redux": "^9.0.0",
+11. "react-router-dom": "^6.20.1",
+12. "react-select": "^5.8.0",
+13. "reactjs-popup": "^2.0.6",
+14. "redux": "^5.0.0",
+15. "redux-thunk": "^3.1.0",
+16. "sort-by": "^0.0.2"
+
+If you haven't installed npm yet, then just writing "npm install" should be all you need to setup.
+If it doesn't work you can try to npm install every dependecy one by one. 
