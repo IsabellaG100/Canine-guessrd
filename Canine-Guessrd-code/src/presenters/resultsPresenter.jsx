@@ -51,6 +51,16 @@ export default function Results(props){
         }
     }
 
+    function handleLogout() {
+        props.model.firebase.logout()
+            .then(() => {
+                navigate('/login'); // Redirect to login view after successful logout
+            })
+            .catch((error) => {
+                console.error('Logout failed:', error);
+            });
+    }
+
     if(props.model.quiz.choosenDogs.length !== 0){
         return (<ResultsView 
             score = {props.model.quiz.score} 
@@ -60,7 +70,9 @@ export default function Results(props){
             index = {index}
             setIndex = {setIndex}
             answerFeedbackBreed = {displayAnswerBreed(index)}
-            answerFeedbackOrigin = {displayAnswerOrigin(index)}/>);   
+            answerFeedbackOrigin = {displayAnswerOrigin(index)}
+            logout={handleLogout}
+            />);   
     }else{
         return (<ResultsErrorView/>);
     }
