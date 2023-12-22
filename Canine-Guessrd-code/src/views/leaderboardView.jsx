@@ -45,8 +45,8 @@ export default function LeaderboardView(props){
         </div>
     )
 
-    function playersTableRowCB(user){
-        return <tr key = {user.id} >
+    function playersTableRowCB(user, index){
+        return <tr key={index}> 
             <td>
                 {user.username}
             </td>
