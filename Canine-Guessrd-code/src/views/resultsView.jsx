@@ -39,6 +39,7 @@ export default function ResultsView(props){
 
                     <a  id = "Logout" 
                         className = "menuItem" 
+                        onClick={props.logout}
                         href = "#/login">
                         Log out
                     </a>
