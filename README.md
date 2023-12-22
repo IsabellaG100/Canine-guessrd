@@ -2,21 +2,30 @@
 A brief description of our project:
 Our project is building a dogbreed quiz website. When pressing start the user will se a picture of a dog and will have to guess the breed and origin of the dog in the picture. If they guess correct they will receive a point for each correct answer. Then the next dog will be shown. The quiz will be on time so the user have to guess the breed and origin of the dogs as fast as possible. When the time is over the user will recieve a score that will be placed on a leader board. To able to save the different users score the player will have to login/register before playing.  
 
+# Project Strcuture
 Your project file structure (short description/purpose of each file)
 Outside of source we have our configureration files. We use vite to create a react website and we use firebase to store information and depoly the app. We are using mobx for a reactive model. 
-In /src:
+# src 
     - assets: Here we have all of our icons. 
+    - models: Here we have our two models
+              - QuizModel.js: The model for the game functionality. 
+              - Firbasemodel.js: The model for the functionality related to firebase
     - presenters: Here we have all of our presenters that connect the view to the model.
-                  - gamePresenter.jsx: Used for
+                  - gamePresenter.jsx: Used for linking the model with leaderboardview.
                   - leaderboardPresenter.jsx: The presenter linking the model with leaderboardview. 
                   - resultsPresenter.jsx: The presenter linkling the model with the resultsview. 
                   - startPresenter.jsx: The presenter linking the model with the startView. 
+                  - loginPresenter.jsx: The presenter linking the model with the loginView. 
+                  - profilePresenter.jsx: The presenter linking the model with the profileView. 
+                  - registerPresenter.jsx: The presenter linking the model with the registerView. 
     - Views: Here we have all our of views, the different pages of our website.
              -  GameView: The page for the actual playing of the game
              -  leaderboardView: The page the will show the leaderboard
              -  LoginView: The page when the user will login. 
-             -  RegisterView: The page when the user will register themselves. 
-             -  resultsview: The page after the user played that will show them the result for that turn.
+             -  profileView: The page that shows the user profile.
+             -  registerView: The page when the user will register themselves. 
+             -  resultsView: The page after the user played that will show them the result for that turn.
+             -  resultsErrorView: The page shown if the user goes to results before having played the game. 
              -  startView: The start page of the site where user can press to login, register of play  
                 (if they have already have done one of the previous two) 
     - apiConfig.js: Configuration of the API.
@@ -24,12 +33,11 @@ In /src:
     - App.jsx: The root component of the website (routing all the views with hashes)
     - dogBreedSource.js: The fetching of the data from the API.
     - firebaseConfig.js: The configuration of firebase
-    - firebaseModel.js/firebaseService.js: The model where we will communicate with firebase and create functionality with 
-                                           firebase. 
     - index.css: css stylign for all relevent html components. Genreal styling.
     - main.jsx: Where we create our root for our website. Here we create our reactive model. 
-    - Quizmodel.js: Our model with the game functionality.
     - resolvePromise.js: Has the function that resolve the promise that the fetching of the API gives us.  
+    - TimerFile.js: The file that creates our timer that we uses in the game
+    - utilities.js: A file with simple functions that the quizModel uses. 
 
 
 How to set up:
