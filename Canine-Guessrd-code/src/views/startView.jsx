@@ -15,6 +15,12 @@ function StartView(props){
         <div>
             <div className = "dropdownMenu">
                 <Menu >
+                    <a  id = "Home" 
+                        className = "menuItem" 
+                        href = "#/start">
+                        Home
+                    </a>
+
                     <a  id = "Profile" 
                         className = "menuItem" 
                         href = "#/profile">
