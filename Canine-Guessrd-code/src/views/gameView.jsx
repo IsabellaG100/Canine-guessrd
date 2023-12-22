@@ -1,7 +1,6 @@
 
 import Select from "react-select";
 import Popup from "reactjs-popup";
-import "/src/popup.css";
 import "/src/index.css";
 
 
