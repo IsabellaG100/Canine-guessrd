@@ -49,7 +49,8 @@ function StartView(props){
                         onClick={startGameACB}>
                         Start Game
                 </button>
-                <Popup trigger={
+            </div>
+            <Popup trigger={
                     <p  className="info">
                         First time playing?
                         <img width="30"
@@ -66,16 +67,13 @@ function StartView(props){
                         <button className="close" onClick={close}>
                             &times;
                         </button>
-                        <iframe allow="autoplay;"
-                                referrerpolicy="strict-origin"
-                                src="https://www.kapwing.com/e/65838d15b235e2e148939673">
-                        </iframe>
+                        <img src="/src/assets/howtoplay.gif">
+                        </img>
                         <button onClick={close}>
                             Got it!
                         </button>
                     </div>)}
                 </Popup>
-            </div>
         </div>
     );
 }

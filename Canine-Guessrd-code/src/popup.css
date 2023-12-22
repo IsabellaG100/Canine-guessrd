@@ -8,18 +8,8 @@
     border-radius: 8px;
 }
 
-[role=tooltip].popup-content{
-    width:200px;
-    box-shadow:0 0 3px rgba(0,0,0,.16);
-    border-radius:5px
-}
-
 .popup-overlay{
     background:rgba(0,0,0,.5)
-}
-
-[data-popup=tooltip].popup-overlay{
-    background:transparent
 }
 
 .popup-arrow{
@@ -41,6 +31,8 @@
     flex-direction: column;
     align-items: center;
     align-content: space-between;
+    height: 100%;
+    width: 100%;
 }
 
 .modal > .close{
@@ -51,16 +43,22 @@
     width: auto;
     line-height: 20px;
     right: -10px;
-    top: -10px;
+    top: -20px;
     font-size: 20px;
     border-radius: 18px;
     outline:none;
   }
 
   .modal > button{
+    margin-top: 10px;
     width: 100px;
   }
 
   .modal > h1{
     text-decoration: underline wavy;
+  }
+
+  .modal > img {
+    width: 100%;
+    height: 100%;
   }
