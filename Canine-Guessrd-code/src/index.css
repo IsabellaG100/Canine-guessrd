@@ -92,6 +92,10 @@ table tr:nth-child(even) {
   background-color: #f2f2f2;
 }
 
+table tr:first-child {
+  font-weight: bolder;
+}
+
 .bm-burger-button {
   position: fixed;
   width: 26px;
