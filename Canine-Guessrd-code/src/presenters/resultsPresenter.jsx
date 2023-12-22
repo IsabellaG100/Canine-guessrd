@@ -2,6 +2,11 @@ import ResultsView from "../views/resultsView"
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
+
+function navigateToStartACB(){
+    window.location.hash = "#/start"
+}
+
 export default function Results(props){
     const navigate = useNavigate();
     const [username, setUsername] = useState('');
@@ -33,12 +38,21 @@ export default function Results(props){
         props.model.quiz.startGame()
     }
 
+    if(props.model.quiz.choosenDogs.length !== 0){
+        return (<ResultsView 
+            score = {props.model.quiz.score} 
+            guessedDogs = {props.model.quiz.guessedDogs}
+            correctDogs = {props.model.quiz.choosenDogs}
+            playAgain = {playAgainACBHandler}
+            index = {index}
+            setIndex = {setIndex}/>);   
+    }else{
+        return (<div>
+            <span>You have to play the game to recieve results</span>
+            <div>
+                <button onClick={navigateToStartACB} >Back to start</button>
+            </div>
+            </div>);
+    }
     
-    return (<ResultsView 
-              score = {props.model.quiz.score} 
-              guessedDogs = {props.model.quiz.guessedDogs}
-              correctDogs = {props.model.quiz.choosenDogs}
-              playAgain = {playAgainACBHandler}
-              index = {index}
-              setIndex = {setIndex}/>);
 }
