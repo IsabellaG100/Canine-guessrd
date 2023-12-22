@@ -20,7 +20,7 @@ export default observer( function Game(props){
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (timerStore.timer === 0) {
+        if (timerStore.timer === 0 || props.model.quiz.choosenDogs.length-1 === props.model.quiz.guessedDogs.length) {
           window.location.hash = "#/results"
         }
       }, [timerStore.timer]);
