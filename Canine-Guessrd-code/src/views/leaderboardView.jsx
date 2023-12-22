@@ -67,8 +67,7 @@ export default function LeaderboardView(props){
             <div className = "backDiv">
                 <button onClick = {backACB}
                         className = "backButton">
-                    <img src = "https://svgshare.com/i/10Zg.svg"
-                         height = {20}/>
+                    Back
                 </button>
             </div>
 
