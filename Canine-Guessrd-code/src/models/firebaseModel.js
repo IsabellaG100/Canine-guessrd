@@ -19,7 +19,7 @@ class FirebaseModel {
         // Bind all methods that need 'this' context
         const methodsToBind = [
             'initAuthStateSync', 'loginWithGoogle', 'logout', 'login', 'register', 'setAuthUser',
-            'setLeaderboardData', 'getLeaderboardData', 'isAuthenticated', 'checkAndUpdateHighscore'
+            'setLeaderboardData', 'getLeaderboardData', 'isAuthenticated', 'checkAndUpdateHighscore', 'getUserData'
         ];
         methodsToBind.forEach(method => {
             this[method] = this[method].bind(this);
