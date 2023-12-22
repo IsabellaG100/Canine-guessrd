@@ -3,10 +3,6 @@ import React from 'react';
 
 function LoginView(props) {
 
-    function leaderboardACB(){
-        window.location.hash = "#/leaderboard"
-    }
-
     return (
         <div>
             <img src = "https://svgshare.com/i/10ZE.svg"

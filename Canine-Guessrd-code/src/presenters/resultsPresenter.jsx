@@ -1,11 +1,8 @@
 import ResultsView from "../views/resultsView"
+import ResultsErrorView from "../views/resultsErrorView";
 import { useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
 
-
-function navigateToStartACB(){
-    window.location.hash = "#/start"
-}
 
 export default function Results(props){
     const navigate = useNavigate();
@@ -65,12 +62,7 @@ export default function Results(props){
             answerFeedbackBreed = {displayAnswerBreed(index)}
             answerFeedbackOrigin = {displayAnswerOrigin(index)}/>);   
     }else{
-        return (<div>
-            <span>You have to play the game to recieve results</span>
-            <div>
-                <button onClick={navigateToStartACB} >Back to start</button>
-            </div>
-            </div>);
+        return (<ResultsErrorView/>);
     }
     
 }
