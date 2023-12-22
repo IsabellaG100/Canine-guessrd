@@ -7,7 +7,7 @@ export default function ResultsErrorView(){
 
     return(
         <div>
-            <span class="" >You have to play the game to recieve results</span>
+            <h3>You have to play the game to recieve results</h3>
             <div>
                 <button onClick={navigateToStartACB} >Back to Start</button>
             </div>
