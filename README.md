@@ -40,7 +40,9 @@ Outside of source we have our configureration files. We use vite to create a rea
     - utilities.js: A file with simple functions that the quizModel uses. 
 
 
-How to set up:
+# How to set up:
+**When you do the set up you have to be in the Canine-Guessrd-Code folder!**
+
 These are all of our dependecies.
 1.  "firebase": "^10.7.0",
 2.  "localforage": "^1.10.0",
