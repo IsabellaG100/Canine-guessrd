@@ -38,6 +38,22 @@ export default function Results(props){
         props.model.quiz.startGame()
     }
 
+    function displayAnswerBreed(index){
+        if(props.model.quiz.guessedDogs[index].breedName === props.model.quiz.choosenDogs[index].breedName){
+            return {feedback: "correct", opacity: "0"}
+        } else {
+            return {feedback: "incorrect", opacity: "100"}
+        }
+    }
+
+    function displayAnswerOrigin(index){
+        if(props.model.quiz.guessedDogs[index].origin === props.model.quiz.choosenDogs[index].origin){
+            return {feedback: "correct", opacity: "0"}
+        } else {
+            return {feedback: "incorrect", opacity: "100"}
+        }
+    }
+
     if(props.model.quiz.choosenDogs.length !== 0){
         return (<ResultsView 
             score = {props.model.quiz.score} 
@@ -45,7 +61,9 @@ export default function Results(props){
             correctDogs = {props.model.quiz.choosenDogs}
             playAgain = {playAgainACBHandler}
             index = {index}
-            setIndex = {setIndex}/>);   
+            setIndex = {setIndex}
+            answerFeedbackBreed = {displayAnswerBreed(index)}
+            answerFeedbackOrigin = {displayAnswerOrigin(index)}/>);   
     }else{
         return (<div>
             <span>You have to play the game to recieve results</span>

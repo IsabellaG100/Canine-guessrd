@@ -72,14 +72,28 @@ export default function ResultsView(props){
                     <p className = "answersTitle">
                         Breed:
                     </p>
-                    {displayAnswer(props.guessedDogs[props.index].breedName, props.correctDogs[props.index].breedName)}
+                    <span  className = "answers">
+                        <p className = {props.answerFeedbackBreed.feedback}>
+                            {props.guessedDogs[props.index].breedName} 
+                        </p>
+                        <p style={{opacity:props.answerFeedbackBreed.opacity}}>
+                            {props.correctDogs[props.index].breedName}
+                        </p>
+                    </span>
                 </span>
 
                 <span className = "resultsText">
                     <p className = "answersTitle">
                         Origin: 
                     </p>
-                    {displayAnswer(props.guessedDogs[props.index].origin, props.correctDogs[props.index].origin)}
+                    <span  className = "answers">
+                        <p className = {props.answerFeedbackOrigin.feedback}>
+                            {props.guessedDogs[props.index].origin} 
+                        </p>
+                        <p style={{opacity:props.answerFeedbackOrigin.opacity}}>
+                            {props.correctDogs[props.index].origin}
+                        </p>
+                    </span>
                 </span>
             </div>
 
@@ -102,28 +116,4 @@ export default function ResultsView(props){
 
         </div>
     )
-
-    function displayAnswer(guess, answer){
-        if(guess === answer){
-            return (
-                <span  className = "answers">
-                        <p>
-                            {guess} 
-                        </p>
-                </span>
-            )
-        } else {
-            return (
-                <span  className = "answers">
-                        <p className = "incorrect">
-                            {guess} 
-                        </p>
-                        <p>
-                            {answer}
-                        </p>
-                </span>
-            )
-        }
-    }
-
 }
